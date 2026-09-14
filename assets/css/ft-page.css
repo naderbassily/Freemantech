@@ -1,0 +1,204 @@
+/**
+ * Freemantech — page layouts.
+ * Replaces Elementor single-page templates 760, 794, 982, 993 and 1042.
+ */
+
+.ft-page { display: flex; flex-direction: column; gap: 50px; }
+
+.ft-page__title { color: var(--ft-color-primary); }
+.ft-page__intro { display: flex; flex-direction: column; gap: 25px; }
+.ft-page__intro-text { width: 70%; }
+
+/* ---------------------------------------------------------------- heroes - */
+
+.ft-page__hero {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	gap: 25px;
+	min-height: 40vh;
+	padding: 50px;
+	border-radius: 10px;
+	overflow: hidden;
+	background-color: var(--ft-color-primary);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+/* About us: 59% black wash over the featured image. */
+.ft-page__hero-scrim {
+	position: absolute;
+	inset: 0;
+	background-color: var(--ft-color-text);
+	opacity: .59;
+	pointer-events: none;
+}
+
+.ft-page__hero-title,
+.ft-page__hero-lead,
+.ft-page__hero .ft-btn { position: relative; z-index: 1; }
+
+.ft-page--about .ft-page__hero-title {
+	font-size: 55px;
+	font-weight: 700;
+	line-height: 1.1;
+	color: var(--ft-color-white);
+	margin: 0;
+	text-align: start;
+}
+
+/*
+ * Support and Contact use the pale ground with a small decorative graphic
+ * rather than a full-bleed photo.
+ */
+.ft-page__hero--pale {
+	background-color: var(--ft-color-accent-blue);
+	background-size: 15% auto;
+	background-position: 90% 62px;
+	gap: 20px;
+}
+.ft-page__hero--pale .ft-page__hero-title {
+	font-size: var(--ft-title-big-size);
+	font-weight: var(--ft-title-big-weight);
+	line-height: var(--ft-title-big-line);
+	color: var(--ft-color-primary);
+	margin: 0;
+}
+.ft-page__hero--pale .ft-page__hero-lead { text-align: center; margin: 0; }
+
+.ft-page__hero--mail {
+	background-size: 7% auto;
+	background-position: 1100px 140px;
+	gap: 25px;
+}
+/* The mail graphic sat under an 86% wash of the same pale colour. */
+.ft-page__hero--mail::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-color: var(--ft-color-accent-blue);
+	opacity: .86;
+	pointer-events: none;
+}
+
+/* ------------------------------------------------------------- about us -- */
+
+.ft-page__layout { display: flex; flex-direction: row; gap: 50px; width: 100%; border-radius: 10px; }
+.ft-page__layout .ft-page__content { width: 70%; min-width: 0; }
+.ft-page__aside { width: 30%; min-width: 0; }
+
+/* ------------------------------------------------- Micromeritics products - */
+
+.ft-product-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	column-gap: 50px;
+	row-gap: 100px;
+}
+
+/* --------------------------------------------------------------- support - */
+
+.ft-contact-block {
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+	padding: 50px 20px 20px;
+	background-color: var(--ft-color-accent-blue);
+}
+.ft-contact-block__title { color: var(--ft-color-primary); text-align: center; }
+.ft-contact-block__text { text-align: center; margin: 0; }
+
+.ft-jotform { width: 100%; }
+.ft-jotform iframe { width: 100% !important; border: 0; }
+
+/* --------------------------------------------------------------- contact - */
+
+.ft-contact { display: flex; flex-direction: row; gap: 50px; }
+
+.ft-contact__form { width: 70%; min-width: 0; }
+.ft-contact__form-title { color: var(--ft-color-primary); margin-bottom: 1rem; }
+
+.ft-contact__info {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	width: 30%;
+	min-width: 0;
+	padding-top: 100px;
+}
+
+.ft-contact__tile {
+	padding: 20px;
+	border-radius: 5px;
+	background-color: var(--ft-color-accent-blue);
+}
+
+.ft-contact__details { margin-top: 20px; }
+.ft-contact__details-title {
+	font-family: var(--ft-font-primary);
+	font-weight: 600;
+	color: var(--ft-color-primary);
+	margin: 0;
+}
+.ft-contact__rule { border: 0; border-top: 1px solid #00000026; margin: 10px 0; }
+
+.ft-contact__row { display: flex; align-items: center; gap: 11px; margin: 0; }
+.ft-contact__row > span:first-child {
+	font-family: var(--ft-font-primary);
+	font-weight: 600;
+	color: var(--ft-color-primary);
+}
+.ft-contact__row > span:last-child { color: var(--ft-color-secondary); }
+
+.ft-distributors { display: flex; flex-direction: column; gap: 0; }
+.ft-distributors__title { color: var(--ft-color-primary); }
+
+.ft-distributor {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 20px;
+	padding: 20px;
+	margin-top: 20px;
+	border-radius: 10px;
+	background-color: var(--ft-color-accent-blue);
+}
+.ft-distributor__flag { width: 15%; }
+.ft-distributor__flag img {
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
+	border-radius: 100px;
+}
+
+/* ------------------------------------------------------------ responsive - */
+
+@media (max-width: 1366px) {
+	.ft-page__hero--mail { background-position: 90% 140px; }
+}
+
+@media (max-width: 1024px) {
+	.ft-page__intro-text { width: 100%; }
+	.ft-product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 50px; }
+	.ft-page__layout,
+	.ft-contact { flex-wrap: wrap; }
+	.ft-page__layout .ft-page__content,
+	.ft-page__aside,
+	.ft-contact__form,
+	.ft-contact__info { width: 100%; }
+	.ft-contact__info { padding-top: 0; }
+	.ft-page__hero--mail,
+	.ft-page__hero--pale { background-position: 100% 100%; }
+}
+
+@media (max-width: 767px) {
+	.ft-page__hero { padding: 25px; }
+	.ft-page--about .ft-page__hero-title { font-size: 36px; }
+	.ft-page__hero--pale .ft-page__hero-title { font-size: 2.2rem; line-height: 2.6rem; }
+	.ft-product-grid { grid-template-columns: minmax(0, 1fr); }
+	.ft-distributor { flex-direction: column; align-items: flex-start; }
+	.ft-distributor__flag { width: auto; }
+}

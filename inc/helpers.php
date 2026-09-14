@@ -177,3 +177,18 @@ function freemantech_pagination() {
 		)
 	);
 }
+
+/**
+ * Embed a JotForm.
+ *
+ * The forms were previously injected through Elementor HTML widgets; the markup
+ * is identical, it just lives in the theme now.
+ *
+ * @param string $form_id JotForm form id.
+ */
+function freemantech_jotform( $form_id ) {
+	printf(
+		'<div class="ft-jotform"><script type="text/javascript" src="%s"></script></div>',
+		esc_url( 'https://form.jotform.com/jsform/' . $form_id )
+	);
+}

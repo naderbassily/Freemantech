@@ -142,6 +142,7 @@ function freemantech_scripts() {
 	wp_enqueue_style( 'freemantech-components', get_template_directory_uri() . '/assets/css/ft-components.css', array( 'freemantech-base' ), _S_VERSION );
 	wp_enqueue_style( 'freemantech-article', get_template_directory_uri() . '/assets/css/ft-article.css', array( 'freemantech-base' ), _S_VERSION );
 	wp_enqueue_style( 'freemantech-archive', get_template_directory_uri() . '/assets/css/ft-archive.css', array( 'freemantech-base' ), _S_VERSION );
+	wp_enqueue_style( 'freemantech-page', get_template_directory_uri() . '/assets/css/ft-page.css', array( 'freemantech-base' ), _S_VERSION );
 
 	wp_enqueue_script( 'freemantech-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'freemantech-mobile-nav', get_template_directory_uri() . '/js/mobile-nav.js', array(), _S_VERSION, true );
