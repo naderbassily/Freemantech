@@ -136,7 +136,8 @@ p:last-child { margin-bottom: 0; }
 .ft-title-sm  { font-size: var(--ft-title-sm-size);  line-height: var(--ft-title-sm-line);  font-weight: var(--ft-title-sm-weight); }
 .ft-title-xs  { font-size: var(--ft-title-xs-size);  line-height: var(--ft-title-xs-line);  font-weight: var(--ft-title-xs-weight); }
 .ft-subtitle  { font-size: var(--ft-subtitle-size);  line-height: var(--ft-subtitle-line); }
-.ft-article   { font-family: var(--ft-font-article); font-size: var(--ft-article-size); line-height: var(--ft-article-line); font-weight: var(--ft-article-weight); }
+/* Named .ft-type-article, not .ft-article: that is the article layout block. */
+.ft-type-article { font-family: var(--ft-font-article); font-size: var(--ft-article-size); line-height: var(--ft-article-line); font-weight: var(--ft-article-weight); }
 
 .ft-screen-reader-text {
 	border: 0;

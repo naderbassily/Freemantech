@@ -247,3 +247,42 @@
 	.ft-intro__body { width: 100%; padding: 30px; gap: 25px; }
 	.ft-home-cards__grid { grid-template-columns: minmax(0, 1fr); gap: 25px; }
 }
+
+/* ---------------------------------------------------- FT4 hero animation - */
+/*
+ * Carried over from the per-element Custom CSS on the hero image in the
+ * Elementor homepage (40) and product (281) templates.
+ */
+.ft4-hero {
+	opacity: 0;
+	transform: scale(0.7);
+	filter: brightness(0.3);
+	animation: cinematicEntrance 5s ease-out forwards;
+}
+
+@keyframes cinematicEntrance {
+	0% {
+		opacity: 0;
+		transform: scale(0.7);
+		filter: brightness(0.3);
+	}
+	50% {
+		opacity: 0.5;
+		transform: scale(0.85);
+		filter: brightness(0.6);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+		filter: brightness(1);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.ft4-hero {
+		animation: none;
+		opacity: 1;
+		transform: none;
+		filter: none;
+	}
+}

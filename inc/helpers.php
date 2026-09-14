@@ -179,13 +179,24 @@ function freemantech_jotform( $form_id ) {
 /**
  * Output a post excerpt the way Elementor's post-excerpt widget did.
  *
- * Excerpts here are hand-written: some wrap themselves in <p> tags, and some
- * contain a bare "<" (for example "sizes <10 μm"). the_excerpt() treats that
- * "<" as the start of a tag and silently swallows the rest of the sentence,
- * while esc_html() would show the intended <p> tags as literal text.
- * wp_kses_post() keeps real markup and escapes the stray "<", which is what
- * the Elementor widget produced.
+ * Two behaviours worth keeping:
+ *
+ * 1. It read the excerpt field directly (the dynamic tag ran with
+ *    apply_to_post_content "no" and no fallback), so a post with an empty
+ *    excerpt showed nothing at all. get_the_excerpt() would instead trim the
+ *    post content into an auto-excerpt ending in "[…]", which 17 posts here
+ *    would suddenly gain.
+ * 2. Excerpts are hand-written: some wrap themselves in <p> tags, and some
+ *    contain a bare "<" (for example "sizes <10 μm"). wp_kses_post() keeps the
+ *    real markup and escapes the stray "<", where the_excerpt() would treat it
+ *    as a tag and swallow the rest of the sentence.
  */
 function freemantech_the_excerpt() {
-	echo wp_kses_post( get_the_excerpt() );
+	$excerpt = get_post_field( 'post_excerpt', get_the_ID() );
+
+	if ( '' === trim( (string) $excerpt ) ) {
+		return;
+	}
+
+	echo wp_kses_post( wptexturize( $excerpt ) );
 }

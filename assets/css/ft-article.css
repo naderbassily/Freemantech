@@ -22,13 +22,18 @@
 	background-size: cover;
 }
 
-/* Watermark overlay that sat at 7% on the Elementor container. */
+/*
+ * Watermark overlay that sat at 7% on the Elementor container. Elementor set
+ * only the image and no-repeat, so position and size stay at the CSS defaults:
+ * top-left, at the SVG's own size.
+ */
 .ft-article__hero-mark {
 	position: absolute;
 	inset: 0;
 	background-color: var(--ft-color-text);
 	background-repeat: no-repeat;
-	background-position: center center;
+	background-position: 0 0;
+	background-size: auto;
 	opacity: .07;
 	pointer-events: none;
 }
@@ -59,6 +64,22 @@
 }
 
 .ft-article__main { display: flex; flex-direction: column; width: 70%; min-width: 0; }
+
+/*
+ * Editor content styling. Carried over from the page-level Custom CSS on the
+ * Elementor template, plus the post-content widget's own text colour.
+ */
+.ft-article__content {
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+	color: var(--ft-color-secondary);
+}
+.ft-article__content p {
+	font-size: 1rem;
+	line-height: 1.7rem;
+}
+.ft-article__content .is-layout-grid { gap: 25px; }
 
 .ft-article__video { margin-bottom: 50px; }
 .ft-article__video iframe { width: 100%; aspect-ratio: 16 / 9; height: auto; border: 0; }
