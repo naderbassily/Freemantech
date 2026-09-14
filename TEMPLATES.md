@@ -86,3 +86,44 @@ ACF field groups, the five ACF post types, both ACF taxonomies, and the theme's
 own shortcodes (`[resource_filter]`, `[testimonial_carousel]`,
 `[distributors_grid]`, `[product_specs]`, `[synced_content]`) were never
 Elementor-dependent and were left alone.
+
+## Webfonts
+
+Inter, Inter Tight and Roboto are loaded from Google Fonts in
+`inc/helpers.php` (`freemantech_fonts`), with the same weights Elementor
+requested. They matter: without them the theme names the families but falls
+back to whatever the visitor has, which changes text metrics and line wrapping
+on every page.
+
+## Parity with the live site
+
+Measured at a 1440x900 viewport against
+`https://freemantech-co-uk.lhr.stackstaging.com`, comparing full document
+height and the position/size of every section:
+
+| Page | Live | Theme | Delta |
+| --- | --- | --- | --- |
+| Front page | 2535 | 2535 | 0 |
+| About us | 2841 | 2841 | 0 |
+| Applications archive | 1994 | 1994 | 0 |
+| Micromeritics Products | 6036 | 6036 | 0 |
+| Policy pages | 1828 | 1828 | 0 |
+| Products archive | 2235 | 2237 | +2 |
+| Resources archive | 3994 | 4004 | +10 |
+| Accessories archive | 2020 | 2006 | −14 |
+| Contact us | 2654 | 2673 | +19 |
+| Support | 5471 | 5449 | −22 |
+| Single article | 4683 | 4642 | −41 |
+| Single accessory | 2115 | 2208 | +93 |
+| Single product | 6030 | 5764 | −266 |
+
+Known causes of the remaining deltas:
+
+- **Contact / Support / Accessory** carry JotForm iframes, whose height the
+  form service sets at runtime and varies between loads.
+- **Single product** mostly reflects different image assets in this database:
+  `ft4-tecnolgy.jpg` is 1000x556 here and 640x356 on the live site, so the
+  "How it works" tab panel renders taller. Both render the image at its natural
+  size capped by its column, which is the behaviour Elementor had.
+- **Single accessory** renders the featured image column at the declared 25%
+  (324px) where Elementor's flex sizing settled on 249px.
