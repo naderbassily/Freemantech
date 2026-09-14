@@ -105,7 +105,8 @@
 	line-height: var(--ft-title-xs-line);
 	color: var(--ft-color-secondary);
 }
-.ft-article__related-list { display: flex; flex-direction: column; gap: 50px; }
+/* 50px separates the heading from the list; the loop grid itself used 30px. */
+.ft-article__related-list { display: flex; flex-direction: column; gap: 30px; }
 
 /* Related card (was loop template 536). */
 .ft-card--related {
@@ -140,8 +141,12 @@
 /* ============================================ article content typography == */
 /* Carried over from the "Articles" custom-code snippet. */
 
-.ft-article__content h2,
-.ft-article__content h3 {
+/*
+ * The snippet injected this globally on these post types, so it also pulls up
+ * headings outside the editor content -- the related-card titles included.
+ */
+.ft-article h2,
+.ft-article h3 {
 	color: var(--ft-color-primary);
 	margin-block-end: -0.6em;
 	line-height: 1.4em;

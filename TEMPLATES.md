@@ -113,7 +113,9 @@ height and the position/size of every section:
 | Accessories archive | 2020 | 2006 | −14 |
 | Contact us | 2654 | 2673 | +19 |
 | Support | 5471 | 5449 | −22 |
-| Single article | 4683 | 4642 | −41 |
+| Single article (Shear Testing) | 4683 | 4692 | +9 |
+| Single article (Working with Powders) | 4706 | 4715 | +9 |
+| Single resource (video, short body) | 2748 | 2759 | +11 |
 | Single accessory | 2115 | 2208 | +93 |
 | Single product | 6030 | 5764 | −266 |
 
