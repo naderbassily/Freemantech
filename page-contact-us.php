@@ -17,7 +17,7 @@ while ( have_posts() ) :
 	$freemantech_jp   = freemantech_asset_url( '2026/02/Flag_of_Japan.svg.png' );
 	?>
 
-	<main id="primary" class="site-main main-flow ft-page ft-page--contact">
+	<main id="primary" <?php post_class( array( 'site-main', 'main-flow', 'ft-page', 'ft-page--contact' ) ); ?>>
 
 		<header class="ft-page__hero ft-page__hero--pale ft-page__hero--mail"
 			<?php if ( $freemantech_hero ) : ?>

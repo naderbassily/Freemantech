@@ -13,7 +13,7 @@ while ( have_posts() ) :
 	the_post();
 	?>
 
-	<main id="primary" class="site-main main-flow ft-page ft-page--about">
+	<main id="primary" <?php post_class( array( 'site-main', 'main-flow', 'ft-page', 'ft-page--about' ) ); ?>>
 
 		<header class="ft-page__hero"
 			<?php if ( has_post_thumbnail() ) : ?>

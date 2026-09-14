@@ -200,3 +200,48 @@ function freemantech_the_excerpt() {
 
 	echo wp_kses_post( wptexturize( $excerpt ) );
 }
+
+/**
+ * Load the brand webfonts.
+ *
+ * Elementor used to enqueue these from Google Fonts; without them the theme
+ * declared Inter / Inter Tight / Roboto but fell back to whatever the visitor
+ * happened to have, which changed text metrics and line wrapping everywhere.
+ * Weights match what Elementor requested.
+ */
+function freemantech_fonts() {
+	$weights = '100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic';
+
+	$families = array(
+		'Inter'       => $weights,
+		'Inter+Tight' => $weights,
+		'Roboto'      => $weights,
+	);
+
+	foreach ( $families as $family => $variants ) {
+		wp_enqueue_style(
+			'freemantech-font-' . strtolower( str_replace( '+', '-', $family ) ),
+			'https://fonts.googleapis.com/css?family=' . $family . ':' . $variants . '&display=swap',
+			array(),
+			null // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
+		);
+	}
+}
+add_action( 'wp_enqueue_scripts', 'freemantech_fonts', 5 );
+
+/**
+ * Preconnect to the Google Fonts hosts so the faces arrive sooner.
+ *
+ * @param array  $urls          Resource URLs.
+ * @param string $relation_type Relation type.
+ * @return array
+ */
+function freemantech_font_preconnect( $urls, $relation_type ) {
+	if ( 'preconnect' === $relation_type ) {
+		$urls[] = array( 'href' => 'https://fonts.gstatic.com', 'crossorigin' );
+		$urls[] = array( 'href' => 'https://fonts.googleapis.com' );
+	}
+
+	return $urls;
+}
+add_filter( 'wp_resource_hints', 'freemantech_font_preconnect', 10, 2 );

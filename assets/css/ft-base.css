@@ -116,6 +116,21 @@ h1, h2, h3, h4, h5, h6 {
 	color: inherit;
 }
 
+/*
+ * ...but editor content keeps the browser's own heading margins, which is what
+ * the old Elementor post-content widget rendered with. Zeroing them here closed
+ * up the spacing between headings and paragraphs inside page/post content.
+ */
+.entry-content h1,
+.entry-content h2,
+.entry-content h3,
+.entry-content h4,
+.entry-content h5,
+.entry-content h6 {
+	margin-block-start: revert;
+	margin-block-end: revert;
+}
+
 p { margin: 0 0 1rem; }
 p:last-child { margin-bottom: 0; }
 

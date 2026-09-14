@@ -15,7 +15,7 @@ while ( have_posts() ) :
 	$freemantech_hero = freemantech_asset_url( '2026/01/Ft4-hero.webp' );
 	?>
 
-	<main id="primary" class="site-main main-flow ft-page ft-page--support">
+	<main id="primary" <?php post_class( array( 'site-main', 'main-flow', 'ft-page', 'ft-page--support' ) ); ?>>
 
 		<header class="ft-page__hero ft-page__hero--pale"
 			<?php if ( $freemantech_hero ) : ?>

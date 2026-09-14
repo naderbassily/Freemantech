@@ -5,6 +5,14 @@
 
 .ft-page { display: flex; flex-direction: column; gap: 50px; }
 
+/*
+ * The inherited _s stylesheet puts a 1.5em top margin on .entry-content, which
+ * these layouts do not want -- the surrounding flex gap already spaces them.
+ */
+.ft-page__content.entry-content,
+.ft-article__content.entry-content,
+.ft-accessory__content.entry-content { margin-top: 0; }
+
 .ft-page__title { color: var(--ft-color-primary); }
 .ft-page__intro { display: flex; flex-direction: column; gap: 25px; }
 .ft-page__intro-text { width: 70%; }
@@ -44,7 +52,7 @@
 .ft-page--about .ft-page__hero-title {
 	font-size: 55px;
 	font-weight: 700;
-	line-height: 1.1;
+	line-height: 1;
 	color: var(--ft-color-white);
 	margin: 0;
 	text-align: start;
@@ -87,7 +95,9 @@
 /* ------------------------------------------------------------- about us -- */
 
 .ft-page__layout { display: flex; flex-direction: row; gap: 50px; width: 100%; border-radius: 10px; }
-.ft-page__layout .ft-page__content { width: 70%; min-width: 0; }
+/* flow-root: without it the first child's top margin collapses through and
+   pushes the whole column down relative to the sidebar. */
+.ft-page__layout .ft-page__content { width: 70%; min-width: 0; display: flow-root; }
 .ft-page__aside { width: 30%; min-width: 0; }
 
 /* ------------------------------------------------- Micromeritics products - */
