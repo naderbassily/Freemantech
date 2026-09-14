@@ -118,44 +118,27 @@ add_action( 'after_setup_theme', 'freemantech_register_menus', 11 );
 /**
  * Query posts related to the given one.
  *
- * Reproduces Elementor's "Related" loop source: same post type, sharing at
- * least one term in any of that post type's taxonomies, most recent first.
+ * Elementor's "Related" loop source had no taxonomy selected, so in practice it
+ * listed the most recent posts of the same post type. This reproduces that,
+ * with one deliberate change: the post being viewed is excluded, where the
+ * Elementor version could list the current article under "Related:".
  *
  * @param int $post_id Post to find relatives for.
  * @param int $limit   Maximum posts to return.
  * @return WP_Query|null
  */
 function freemantech_related_query( $post_id, $limit = 10 ) {
-	$post_type  = get_post_type( $post_id );
-	$taxonomies = get_object_taxonomies( $post_type );
-	$tax_query  = array( 'relation' => 'OR' );
-
-	foreach ( $taxonomies as $taxonomy ) {
-		$terms = wp_get_object_terms( $post_id, $taxonomy, array( 'fields' => 'ids' ) );
-
-		if ( ! is_wp_error( $terms ) && $terms ) {
-			$tax_query[] = array(
-				'taxonomy' => $taxonomy,
-				'field'    => 'term_id',
-				'terms'    => $terms,
-			);
-		}
-	}
-
-	$args = array(
-		'post_type'           => $post_type,
-		'post__not_in'        => array( $post_id ),
-		'posts_per_page'      => $limit,
-		'ignore_sticky_posts' => true,
-		'no_found_rows'       => true,
+	$query = new WP_Query(
+		array(
+			'post_type'           => get_post_type( $post_id ),
+			'post__not_in'        => array( $post_id ),
+			'posts_per_page'      => $limit,
+			'orderby'             => 'date',
+			'order'               => 'DESC',
+			'ignore_sticky_posts' => true,
+			'no_found_rows'       => true,
+		)
 	);
-
-	// Only constrain by taxonomy when the post actually has terms.
-	if ( count( $tax_query ) > 1 ) {
-		$args['tax_query'] = $tax_query; // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
-	}
-
-	$query = new WP_Query( $args );
 
 	return $query->have_posts() ? $query : null;
 }
@@ -191,4 +174,18 @@ function freemantech_jotform( $form_id ) {
 		'<div class="ft-jotform"><script type="text/javascript" src="%s"></script></div>',
 		esc_url( 'https://form.jotform.com/jsform/' . $form_id )
 	);
+}
+
+/**
+ * Output a post excerpt the way Elementor's post-excerpt widget did.
+ *
+ * Excerpts here are hand-written: some wrap themselves in <p> tags, and some
+ * contain a bare "<" (for example "sizes <10 μm"). the_excerpt() treats that
+ * "<" as the start of a tag and silently swallows the rest of the sentence,
+ * while esc_html() would show the intended <p> tags as literal text.
+ * wp_kses_post() keeps real markup and escapes the stray "<", which is what
+ * the Elementor widget produced.
+ */
+function freemantech_the_excerpt() {
+	echo wp_kses_post( get_the_excerpt() );
 }

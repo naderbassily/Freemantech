@@ -29,8 +29,8 @@ $freemantech_ft4_thumb = freemantech_asset_url( '2026/01/FT4-thumb.jpg' );
 
 			<div class="ft-feature-panel__text">
 				<p><?php esc_html_e( 'The FT4 Powder Rheometer, the flagship product from Freeman Technology, is a universal powder tester.', 'freemantech' ); ?></p>
-				<p><?php esc_html_e( "In addition to the unique dynamic methodology, where a powder's resistance to flow is measured whilst the powder is in motion, the FT4 also includes a shear cell for measuring the powder's shear strength, a wall friction kit to quantify how a powder shears with respect to the surfaces of process equipment (in accordance with ASTM Standard D7891), as well as accessories for measuring bulk properties, such as density, compressibility and permeability.", 'freemantech' ); ?></p>
-				<p><?php esc_html_e( "The range of measurement capabilities the FT4 provides makes it the world's most versatile powder testing instrument for measuring and understanding powder flow and powder behaviour.", 'freemantech' ); ?></p>
+				<p><?php esc_html_e( "In addition to the unique dynamic methodology, where a powder's resistance to flow is measured whilst the powder is in motion, the FT4 also includes a shear cell for measuring the powder’s shear strength, a wall friction kit to quantify how a powder shears with respect to the surfaces of process equipment (in accordance with ASTM Standard D7891), as well as accessories for measuring bulk properties, such as density, compressibility and permeability.", 'freemantech' ); ?></p>
+				<p><?php esc_html_e( "The range of measurement capabilities the FT4 provides makes it the world’s most versatile powder testing instrument for measuring and understanding powder flow and powder behaviour.", 'freemantech' ); ?></p>
 			</div>
 
 			<div class="simple-read-more btn-blue">

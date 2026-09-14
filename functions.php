@@ -185,6 +185,11 @@ require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/helpers.php';
 
 /**
+ * Third-party embeds carried over from Elementor custom-code snippets.
+ */
+require get_template_directory() . '/inc/third-party.php';
+
+/**
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';

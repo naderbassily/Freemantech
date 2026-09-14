@@ -20,7 +20,7 @@
 	<div class="ft-card__body">
 		<h2 class="ft-card__title ft-title-sm"><?php the_title(); ?></h2>
 
-		<div class="ft-card__excerpt"><?php the_excerpt(); ?></div>
+		<div class="ft-card__excerpt"><?php freemantech_the_excerpt(); ?></div>
 
 		<div class="simple-read-more btn-blue ft-card__more">
 			<a href="<?php the_permalink(); ?>"><?php esc_html_e( 'Read more', 'freemantech' ); ?></a>

@@ -1,8 +1,8 @@
 <?php
 /**
- * The template for displaying archive pages
+ * Generic archive fallback.
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ * Used for any archive without a more specific template.
  *
  * @package freemantech
  */
@@ -10,42 +10,33 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+<main id="primary" class="site-main main-flow ft-archive">
 
-		<?php if ( have_posts() ) : ?>
+	<?php if ( have_posts() ) : ?>
 
-			<header class="page-header">
-				<?php
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
-				the_archive_description( '<div class="archive-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
+		<header class="ft-archive__intro">
+			<?php the_archive_title( '<h1 class="ft-archive__title ft-title-sm">', '</h1>' ); ?>
+			<?php the_archive_description( '<div class="ft-archive__lead">', '</div>' ); ?>
+		</header>
 
+		<div class="ft-archive__grid ft-archive__grid--3">
 			<?php
-			/* Start the Loop */
 			while ( have_posts() ) :
 				the_post();
-
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
-
+				get_template_part( 'template-parts/cards/card', 'feature' );
 			endwhile;
+			?>
+		</div>
 
-			the_posts_navigation();
+		<?php freemantech_pagination(); ?>
 
-		else :
+	<?php else : ?>
 
-			get_template_part( 'template-parts/content', 'none' );
+		<?php get_template_part( 'template-parts/content', 'none' ); ?>
 
-		endif;
-		?>
+	<?php endif; ?>
 
-	</main><!-- #main -->
+</main><!-- #primary -->
 
 <?php
-get_sidebar();
 get_footer();

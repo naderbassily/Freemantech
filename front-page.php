@@ -56,7 +56,7 @@ $freemantech_intro_image = freemantech_asset_url( '2026/01/a2015a30-9320-4582-94
 			</h2>
 
 			<p>
-				<?php esc_html_e( "The FT4, the flagship product from Freeman Technology, is a universal powder flow tester. The range of measurement capabilities the FT4 provides makes it the world's most versatile powder testing instrument for measuring and understanding powder flow and powder behaviour.", 'freemantech' ); ?>
+				<?php esc_html_e( "The FT4, the flagship product from Freeman Technology, is a universal powder flow tester. The range of measurement capabilities the FT4 provides makes it the world’s most versatile powder testing instrument for measuring and understanding powder flow and powder behaviour.", 'freemantech' ); ?>
 			</p>
 
 			<div class="simple-read-more btn-blue">

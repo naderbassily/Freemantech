@@ -184,3 +184,9 @@
 }
 
 .ft-card--product .ft-card__excerpt { text-align: center; color: var(--ft-color-text); }
+
+/* ------------------------------------------------------- search results -- */
+
+.ft-search-results { display: flex; flex-direction: column; }
+.ft-archive__search { max-width: 420px; }
+.ft-archive--search .ft-archive__title span { color: var(--ft-color-text); }

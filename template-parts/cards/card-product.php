@@ -17,6 +17,6 @@
 
 	<h2 class="ft-card__title"><?php the_title(); ?></h2>
 
-	<div class="ft-card__excerpt"><?php the_excerpt(); ?></div>
+	<div class="ft-card__excerpt"><?php freemantech_the_excerpt(); ?></div>
 
 </a>

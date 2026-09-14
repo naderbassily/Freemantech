@@ -51,7 +51,7 @@ $freemantech_footer_logo = freemantech_asset_url( '2026/01/ft-light-logo.svg' );
 				<?php
 				printf(
 					/* translators: %s: current year. */
-					esc_html__( 'Copyright © 2014 - %s | Freeman Technology and Powder Rheometer are registered trademarks of Freeman Technology Ltd', 'freemantech' ),
+					esc_html__( 'Copyright © 2014 – %s | Freeman Technology and Powder Rheometer are registered trademarks of Freeman Technology Ltd', 'freemantech' ),
 					esc_html( gmdate( 'Y' ) )
 				);
 				?>
