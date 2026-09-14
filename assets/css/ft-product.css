@@ -3,7 +3,8 @@
  * Replaces Elementor template 281.
  */
 
-.ft-product { display: flex; flex-direction: column; gap: 40px; margin-bottom: 50px; }
+/* Full width: this template's Elementor container was never boxed. */
+.ft-product { display: flex; flex-direction: column; gap: 40px; margin-bottom: 50px; width: 100%; }
 
 .ft-product__heading { color: var(--ft-color-primary); }
 
@@ -187,7 +188,8 @@
 
 .ft-tabs__text { display: flex; flex-direction: column; justify-content: center; width: 50%; min-width: 0; }
 .ft-tabs__media { width: 50%; min-width: 0; }
-.ft-tabs__media img { width: 100%; height: auto; }
+/* Elementor did not upscale these past their natural width. */
+.ft-tabs__media img { width: auto; max-width: 100%; height: auto; }
 
 .ft-tabs__media--boxed {
 	padding: 20px;

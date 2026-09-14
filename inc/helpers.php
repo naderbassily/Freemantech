@@ -245,3 +245,35 @@ function freemantech_font_preconnect( $urls, $relation_type ) {
 	return $urls;
 }
 add_filter( 'wp_resource_hints', 'freemantech_font_preconnect', 10, 2 );
+
+/**
+ * Render an image that lives in uploads, via its attachment where possible.
+ *
+ * Going through the attachment gets real width/height (and srcset) onto the
+ * tag, so lazy-loaded images reserve their space instead of collapsing to zero
+ * height before they load.
+ *
+ * @param string $relative_path Path relative to the uploads base dir.
+ * @param array  $attr          Extra attributes for the img tag.
+ */
+function freemantech_asset_image( $relative_path, $attr = array() ) {
+	$url = freemantech_asset_url( $relative_path );
+
+	if ( ! $url ) {
+		return;
+	}
+
+	$attachment_id = attachment_url_to_postid( $url );
+
+	if ( $attachment_id ) {
+		echo wp_get_attachment_image( $attachment_id, 'full', false, $attr ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		return;
+	}
+
+	$out = '';
+	foreach ( $attr as $key => $value ) {
+		$out .= sprintf( ' %s="%s"', esc_attr( $key ), esc_attr( $value ) );
+	}
+
+	printf( '<img src="%s"%s>', esc_url( $url ), $out ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+}

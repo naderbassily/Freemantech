@@ -17,7 +17,7 @@ while ( have_posts() ) :
 	$freemantech_powder = freemantech_asset_url( '2026/01/ft4-powder.jpg' );
 	?>
 
-	<main id="primary" class="site-main main-flow ft-product">
+	<main id="primary" class="site-main ft-product">
 
 		<?php // -------------------------------------------------------- hero -- ?>
 		<section class="ft-product__hero">
