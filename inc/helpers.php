@@ -159,3 +159,21 @@ function freemantech_related_query( $post_id, $limit = 10 ) {
 
 	return $query->have_posts() ? $query : null;
 }
+
+/**
+ * Archive pagination.
+ *
+ * Elementor's loop grids used a "Load More" button; this is the standard
+ * numbered equivalent and only prints when there is more than one page.
+ */
+function freemantech_pagination() {
+	the_posts_pagination(
+		array(
+			'mid_size'           => 1,
+			'prev_text'          => esc_html__( 'Previous', 'freemantech' ),
+			'next_text'          => esc_html__( 'Next', 'freemantech' ),
+			'screen_reader_text' => esc_html__( 'Posts navigation', 'freemantech' ),
+			'class'              => 'ft-pagination',
+		)
+	);
+}

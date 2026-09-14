@@ -1,0 +1,186 @@
+/**
+ * Freemantech — archive layouts.
+ * Replaces Elementor archive templates 483, 657, 925 and 1107.
+ */
+
+.ft-archive { }
+
+/* --------------------------------------------------------------- intros -- */
+
+.ft-archive__intro { display: flex; flex-direction: column; gap: 25px; }
+
+.ft-archive--resources .ft-archive__intro { width: 72%; }
+.ft-archive--resources .ft-archive__title {
+	font-size: var(--ft-title-big-size);
+	font-weight: var(--ft-title-big-weight);
+	line-height: var(--ft-title-big-line);
+	color: var(--ft-color-primary);
+}
+
+.ft-archive__title { color: var(--ft-color-primary); }
+.ft-archive__lead { width: 70%; }
+
+/* ----------------------------------------------------------------- hero -- */
+
+.ft-archive__hero {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-end;
+	gap: 25px;
+	min-height: 40vh;
+	padding: 50px;
+	border-radius: 10px;
+	overflow: hidden;
+	background-color: var(--ft-color-text);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.ft-archive__hero-scrim {
+	position: absolute;
+	inset: 0;
+	background-color: var(--ft-color-text);
+	opacity: .6;
+	pointer-events: none;
+}
+
+.ft-archive__hero-title {
+	position: relative;
+	z-index: 1;
+	font-size: 55px;
+	font-weight: 700;
+	line-height: 1.1;
+	color: var(--ft-color-white);
+	text-align: start;
+	margin: 0;
+}
+
+/* ---------------------------------------------------------------- grids -- */
+
+.ft-archive__grid {
+	display: grid;
+	gap: 50px;
+	grid-auto-rows: 1fr;
+}
+.ft-archive__grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.ft-archive__grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.ft-archive__accessories { display: flex; flex-direction: column; gap: 50px; margin-block: 50px 100px; }
+
+/* ------------------------------------------------- product feature panel -- */
+
+.ft-feature-panel {
+	display: flex;
+	flex-direction: row;
+	gap: 50px;
+	border-radius: 10px;
+	overflow: hidden;
+	background-color: var(--ft-color-accent-blue);
+}
+
+.ft-feature-panel__media {
+	width: 30%;
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.ft-feature-panel__body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 25px;
+	padding: 20px;
+	flex: 1;
+}
+
+.ft-feature-panel__title { color: var(--ft-color-primary); }
+
+/* ------------------------------------------------------------ responsive - */
+
+@media (max-width: 1366px) {
+	.ft-feature-panel { gap: 30px; }
+	.ft-feature-panel__media { width: 50%; }
+	.ft-archive__grid--4 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 1024px) {
+	.ft-archive--resources .ft-archive__intro { width: 100%; }
+	.ft-archive__lead { width: 100%; }
+	.ft-archive__grid--4,
+	.ft-archive__grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	.ft-feature-panel { flex-wrap: wrap; }
+	.ft-feature-panel__media { width: 100%; min-height: 348px; }
+	.ft-feature-panel__body { width: 100%; }
+}
+
+@media (max-width: 767px) {
+	.ft-archive__hero { padding: 25px; }
+	.ft-archive__hero-title { font-size: 36px; }
+	.ft-archive__grid--4,
+	.ft-archive__grid--3 { grid-template-columns: minmax(0, 1fr); gap: 25px; }
+}
+
+/* ----------------------------------------------------------- pagination -- */
+
+.ft-pagination .nav-links {
+	display: flex;
+	justify-content: center;
+	gap: .5rem;
+	margin-top: 50px;
+}
+.ft-pagination .page-numbers {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 38px;
+	height: 38px;
+	padding: 0 .6rem;
+	border-radius: 4px;
+	background-color: var(--ft-color-accent-blue);
+	color: var(--ft-color-primary);
+	text-decoration: none;
+}
+.ft-pagination .page-numbers.current,
+.ft-pagination .page-numbers:hover {
+	background-color: var(--ft-color-primary);
+	color: var(--ft-color-white);
+	text-decoration: none;
+}
+
+/* ------------------------------------------------------ product/accessory - */
+
+.ft-card--product,
+.ft-card--accessory {
+	color: inherit;
+	text-decoration: none;
+	height: 100%;
+}
+.ft-card--product:hover,
+.ft-card--accessory:hover { text-decoration: none; }
+
+.ft-card--product { gap: 12px; }
+.ft-card--accessory { gap: 20px; }
+
+.ft-card--product .ft-card__image,
+.ft-card--accessory .ft-card__image { width: 100%; max-width: 100%; border-radius: 10px; }
+
+.ft-card--product .ft-card__title,
+.ft-card--accessory .ft-card__title { text-align: center; color: var(--ft-color-primary); margin: 0; }
+
+.ft-card--product .ft-card__title {
+	font-size: var(--ft-title-xs-size);
+	font-weight: var(--ft-title-xs-weight);
+	line-height: var(--ft-title-xs-line);
+}
+.ft-card--accessory .ft-card__title {
+	font-family: var(--ft-font-text);
+	font-size: var(--ft-text-size);
+	font-weight: var(--ft-text-weight);
+	line-height: var(--ft-text-line);
+}
+
+.ft-card--product .ft-card__excerpt { text-align: center; color: var(--ft-color-text); }
