@@ -1,6 +1,15 @@
-.main-flow {margin-bottom:100px !important}
-.main-flow > .e-con-inner {
-    gap: 50px !important;
+/*
+ * Main content flow. Was an Elementor boxed container whose inner wrapper
+ * carried the gap; that wrapper is gone, so the rules now sit on .main-flow.
+ */
+.main-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 100%;
+    max-width: var(--ft-container);
+    margin-inline: auto;
+    margin-bottom: 100px;
 }
 
 /* Base read more */
@@ -54,8 +63,8 @@ p {
 
 }
 
-  @media (max-width: 1440px) {
-  .main-flow > .e-con-inner {
-    padding: 0 5% 0 5% !important;
+@media (max-width: 1440px) {
+  .main-flow {
+    padding: 0 5%;
   }
-  }
+}

@@ -1,0 +1,245 @@
+/**
+ * Freemantech — shared components.
+ * Values carried over from the Elementor templates they replace.
+ */
+
+/* ================================================================ search == */
+
+.ft-search { display: flex; align-items: center; gap: 6px; }
+
+.ft-search__input {
+	background-color: var(--ft-color-accent-blue);
+	border: none;
+	border-radius: 2px;
+	padding: 5px;
+	font-family: var(--ft-font-text);
+	font-size: var(--ft-text-size);
+	color: var(--ft-color-text);
+	min-width: 0;
+	width: 100%;
+}
+.ft-search__input:focus { outline: 2px solid var(--ft-color-primary); outline-offset: 1px; }
+
+.ft-search__submit {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background: none;
+	border: 0;
+	padding: 4px;
+	cursor: pointer;
+	color: var(--ft-color-primary);
+}
+.ft-search__submit svg { fill: currentColor; }
+
+@media (max-width: 1366px) { .ft-search__input { padding: 3px; } }
+
+.mobile-nav__search .ft-search__input { padding: 10px; }
+
+/* ================================================================= cards == */
+
+.ft-card { display: flex; flex-direction: column; background-color: var(--ft-color-white); }
+
+/* "Card with Feature image" (was template 187) */
+.ft-card--feature {
+	gap: 20px;
+	border: .5px solid var(--ft-color-accent-blue);
+	border-radius: 5px;
+	height: 100%;
+}
+.ft-card--feature .ft-card__image {
+	width: 100%;
+	height: 180px;
+	object-fit: cover;
+	object-position: center center;
+	border-radius: 5px 5px 0 0;
+}
+.ft-card--feature .ft-card__body {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	padding: 20px;
+	flex: 1;
+}
+.ft-card--feature .ft-card__excerpt { padding: 2px; }
+
+/* "Resources Home card" (was template 83) */
+.ft-card--resource {
+	gap: 25px;
+	border-top: 1px solid var(--ft-color-accent-blue);
+	border-bottom: 1px solid var(--ft-color-accent-blue);
+	padding-block: 25px;
+}
+.ft-card__excerpt--fixed { min-height: 75px; }
+
+.ft-card__title { margin: 0; }
+.ft-card__excerpt p { margin: 0; }
+.ft-card__more { margin-top: auto; }
+
+/* ============================================================== carousel == */
+
+.ft-carousel { position: relative; }
+.ft-carousel .swiper-wrapper { align-items: stretch; }
+.ft-carousel .swiper-slide { height: auto; display: flex; }
+.ft-carousel .swiper-slide > * { width: 100%; }
+
+.ft-carousel__prev,
+.ft-carousel__next {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 5;
+	width: 32px;
+	height: 32px;
+	border: 0;
+	background: none;
+	cursor: pointer;
+	color: var(--ft-color-primary);
+}
+.ft-carousel__prev { inset-inline-start: -40px; }
+.ft-carousel__next { inset-inline-end: -40px; }
+
+/* Chevrons, 18px as configured on the Elementor widget. */
+.ft-carousel__prev::before,
+.ft-carousel__next::before {
+	content: "";
+	display: block;
+	width: 18px;
+	height: 18px;
+	border-top: 2px solid currentColor;
+	border-right: 2px solid currentColor;
+	margin-inline: auto;
+}
+.ft-carousel__prev::before { transform: rotate(-135deg); }
+.ft-carousel__next::before { transform: rotate(45deg); }
+
+.ft-carousel__prev.swiper-button-disabled,
+.ft-carousel__next.swiper-button-disabled { opacity: .35; cursor: default; }
+
+.ft-carousel__pagination {
+	display: flex;
+	justify-content: center;
+	gap: 7px;
+	margin-top: 23px;
+}
+.ft-carousel__pagination .swiper-pagination-bullet {
+	width: 8px; height: 8px;
+	border-radius: 50%;
+	background-color: var(--ft-color-accent);
+	opacity: 1;
+	border: 0;
+	cursor: pointer;
+}
+.ft-carousel__pagination .swiper-pagination-bullet-active { background-color: var(--ft-color-primary); }
+
+@media (max-width: 1366px) {
+	.ft-carousel__prev { inset-inline-start: -8px; }
+	.ft-carousel__next { inset-inline-end: -8px; }
+}
+
+/* ============================================================ front page == */
+
+.ft-hero {
+	display: flex;
+	flex-direction: row;
+	min-height: 40vh;
+	border-radius: 10px;
+	background-color: var(--ft-color-text);
+	overflow: hidden;
+}
+
+.ft-hero__content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	gap: 19px;
+	padding: 30px 50px;
+	flex: 1;
+}
+
+.ft-hero__title {
+	font-size: 55px;
+	font-weight: 700;
+	line-height: 1.1;
+	color: var(--ft-color-white);
+	text-align: start;
+}
+
+.ft-hero__lead {
+	font-size: var(--ft-subtitle-size);
+	line-height: var(--ft-subtitle-line);
+	color: var(--ft-color-white);
+	text-align: start;
+	margin: 0;
+}
+
+.ft-hero__media { display: flex; flex: 1; align-items: center; justify-content: center; }
+.ft-hero__media img { height: 500px; width: 100%; object-fit: contain; object-position: center center; }
+
+.ft-intro {
+	display: flex;
+	flex-direction: row;
+	gap: 0;
+	border-radius: 10px;
+	background-color: var(--ft-color-accent-blue);
+	overflow: hidden;
+}
+.ft-intro__media {
+	width: 60%;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: 10px 0 0 10px;
+}
+.ft-intro__body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 50px;
+	padding: 50px;
+	width: 50%;
+}
+.ft-intro__title { color: var(--ft-color-primary); }
+
+.ft-home-cards { display: flex; flex-direction: row; gap: 50px; }
+.ft-home-cards__grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 50px;
+	width: 70%;
+	align-content: start;
+}
+
+.ft-home-promo {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 0;
+	width: 30%;
+	padding: 25px;
+	background-color: var(--ft-color-secondary);
+	color: var(--ft-color-accent);
+}
+.ft-home-promo__title { color: var(--ft-color-accent); }
+/* Replaces the 25px Elementor spacer that sat above the link. */
+.ft-home-promo .simple-read-more { margin-top: 25px; }
+
+.ft-applications { display: flex; flex-direction: column; gap: 25px; }
+.ft-applications__title { color: var(--ft-color-primary); }
+
+@media (max-width: 1024px) {
+	.ft-home-cards { flex-wrap: wrap; }
+	.ft-home-cards__grid { width: 100%; }
+	.ft-home-promo { width: 100%; }
+}
+
+@media (max-width: 767px) {
+	.ft-hero { flex-direction: column; }
+	.ft-hero__title { font-size: 36px; }
+	.ft-hero__media img { height: 320px; }
+	.ft-intro { flex-direction: column; }
+	.ft-intro__media { width: 100%; min-height: 240px; border-radius: 10px 10px 0 0; }
+	.ft-intro__body { width: 100%; padding: 30px; gap: 25px; }
+	.ft-home-cards__grid { grid-template-columns: minmax(0, 1fr); gap: 25px; }
+}

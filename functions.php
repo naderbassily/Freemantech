@@ -46,12 +46,7 @@ function freemantech_setup() {
 		*/
 	add_theme_support( 'post-thumbnails' );
 
-	// This theme uses wp_nav_menu() in one location.
-	register_nav_menus(
-		array(
-			'menu-1' => esc_html__( 'Primary', 'freemantech' ),
-		)
-	);
+	// Nav menu locations are registered in inc/helpers.php.
 
 	/*
 		* Switch default core markup for search form, comment form, and comments
@@ -141,7 +136,14 @@ function freemantech_scripts() {
 	wp_enqueue_style( 'freemantech-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'freemantech-style', 'rtl', 'replace' );
 
+	// Design tokens and base layer. Loaded first so later sheets can override.
+	wp_enqueue_style( 'freemantech-base', get_template_directory_uri() . '/assets/css/ft-base.css', array(), _S_VERSION );
+	wp_enqueue_style( 'freemantech-layout', get_template_directory_uri() . '/assets/css/ft-layout.css', array( 'freemantech-base' ), _S_VERSION );
+	wp_enqueue_style( 'freemantech-components', get_template_directory_uri() . '/assets/css/ft-components.css', array( 'freemantech-base' ), _S_VERSION );
+
 	wp_enqueue_script( 'freemantech-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'freemantech-mobile-nav', get_template_directory_uri() . '/js/mobile-nav.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'freemantech-carousel', get_template_directory_uri() . '/js/ft-carousel.js', array( 'swiper-js' ), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -163,6 +165,11 @@ require get_template_directory() . '/inc/template-tags.php';
  * Functions which enhance the theme by hooking into WordPress.
  */
 require get_template_directory() . '/inc/template-functions.php';
+
+/**
+ * Template helpers for the native templates (replaces Elementor Theme Builder).
+ */
+require get_template_directory() . '/inc/helpers.php';
 
 /**
  * Customizer additions.

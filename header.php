@@ -1,10 +1,9 @@
 <?php
 /**
- * The header for our theme
+ * The header for our theme.
  *
- * This is the template that displays all of the <head> section and everything up until <div id="content">
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ * Replaces the former Elementor "Global Header" template (post 12) and the
+ * "Mobile Nav" popup (post 1335).
  *
  * @package freemantech
  */
@@ -23,37 +22,49 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'freemantech' ); ?></a>
+	<a class="skip-link ft-screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'freemantech' ); ?></a>
 
 	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$freemantech_description = get_bloginfo( 'description', 'display' );
-			if ( $freemantech_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $freemantech_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'freemantech' ); ?></button>
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
-			?>
-		</nav><!-- #site-navigation -->
+		<div class="site-header__bar" aria-hidden="true"></div>
+
+		<div class="site-header__main">
+
+			<div class="site-header__branding">
+				<?php freemantech_site_logo(); ?>
+			</div>
+
+			<div class="site-header__actions">
+
+				<nav class="site-nav ft-hide-tablet ft-hide-mobile" aria-label="<?php esc_attr_e( 'Main menu', 'freemantech' ); ?>">
+					<?php
+					wp_nav_menu(
+						array(
+							'theme_location' => 'primary',
+							'menu_class'     => 'site-nav__list',
+							'container'      => false,
+							'depth'          => 2,
+							'fallback_cb'    => false,
+						)
+					);
+					?>
+				</nav>
+
+				<div class="site-search ft-hide-tablet ft-hide-mobile">
+					<?php get_search_form(); ?>
+				</div>
+
+				<button type="button"
+					class="site-header__toggle ft-hide-desktop"
+					aria-controls="mobile-nav"
+					aria-expanded="false"
+					aria-label="<?php esc_attr_e( 'Open menu', 'freemantech' ); ?>">
+					<span class="site-header__toggle-bars" aria-hidden="true"></span>
+				</button>
+
+			</div>
+
+		</div><!-- .site-header__main -->
 	</header><!-- #masthead -->
+
+	<?php get_template_part( 'template-parts/mobile-nav' ); ?>

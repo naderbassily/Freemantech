@@ -1,0 +1,324 @@
+/**
+ * Freemantech — site header, footer and mobile navigation.
+ * Replaces Elementor templates 12 (header), 270 (footer) and 1335 (mobile nav).
+ */
+
+/* ================================================================ header == */
+
+.site-header { position: relative; z-index: 20; background-color: var(--ft-color-white); }
+
+/* Thin blue band above the main bar. */
+.site-header__bar {
+	min-height: 60px;
+	background-color: var(--ft-color-primary);
+}
+
+.site-header__main {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 30px;
+	min-height: 100px;
+	width: 100%;
+	max-width: var(--ft-container);
+	margin-inline: auto;
+}
+
+.site-header__branding { width: 30%; }
+
+.site-header__logo { display: block; }
+.site-header__logo-img { width: 100%; height: auto; }
+.site-header__logo--text {
+	font-family: var(--ft-font-primary);
+	font-size: var(--ft-title-xs-size);
+	font-weight: 700;
+	color: var(--ft-color-primary);
+}
+
+.site-header__actions {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 50px;
+	flex: 1;
+}
+
+/* ---- primary nav ---- */
+
+.site-nav__list {
+	display: flex;
+	align-items: center;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.site-nav__list a {
+	display: block;
+	font-family: var(--ft-font-primary);
+	font-weight: 600;
+	color: var(--ft-color-text);
+	text-decoration: none;
+	padding: 0 11px;
+	transition: color .2s ease;
+}
+
+.site-nav__list a:hover,
+.site-nav__list a:focus,
+.site-nav__list .current-menu-item > a:hover {
+	color: var(--ft-color-primary);
+}
+
+/* Active item keeps the body colour, as it did in Elementor. */
+.site-nav__list .current-menu-item > a,
+.site-nav__list .current_page_item > a { color: var(--ft-color-text); }
+
+/* Second level */
+.site-nav__list li { position: relative; }
+.site-nav__list .sub-menu {
+	position: absolute;
+	top: 100%;
+	inset-inline-start: 0;
+	min-width: 220px;
+	background-color: var(--ft-color-white);
+	box-shadow: 0 6px 24px rgba(0, 0, 0, .12);
+	list-style: none;
+	margin: 0;
+	padding: .5rem 0;
+	display: none;
+	z-index: 30;
+}
+.site-nav__list li:hover > .sub-menu,
+.site-nav__list li:focus-within > .sub-menu { display: block; }
+.site-nav__list .sub-menu a {
+	font-family: var(--ft-font-accent);
+	font-weight: 500;
+	padding: .5rem 1rem;
+	white-space: nowrap;
+}
+
+/* ---- hamburger ---- */
+
+.site-header__toggle {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background: none;
+	border: 0;
+	padding: 0;
+	margin-inline-start: auto;
+	cursor: pointer;
+	color: var(--ft-color-text);
+	width: 32px;
+	height: 32px;
+}
+
+/* Three-bar icon, matching the former Font Awesome "bars" glyph at 24px. */
+.site-header__toggle-bars,
+.site-header__toggle-bars::before,
+.site-header__toggle-bars::after {
+	display: block;
+	width: 24px;
+	height: 2px;
+	background-color: currentColor;
+	border-radius: 1px;
+}
+.site-header__toggle-bars { position: relative; }
+.site-header__toggle-bars::before,
+.site-header__toggle-bars::after { content: ""; position: absolute; inset-inline-start: 0; }
+.site-header__toggle-bars::before { top: -7px; }
+.site-header__toggle-bars::after  { top: 7px; }
+
+/* ---- header responsive ---- */
+
+@media (max-width: 1366px) {
+	.site-header__main { padding-inline: 5%; }
+	.site-header__actions { gap: 10px; }
+	.site-header__branding { width: 20%; }
+}
+
+@media (max-width: 1024px) {
+	.site-header__branding { width: 40%; }
+	.site-header__actions { justify-content: center; align-items: flex-end; }
+}
+
+@media (max-width: 767px) {
+	.site-header__main { flex-direction: row; flex-wrap: wrap; }
+	.site-header__branding { width: 70%; }
+	.site-header__actions { width: 20%; margin: 0; padding: 0; justify-content: flex-end; }
+}
+
+/* ================================================================ footer == */
+
+.site-footer { color: var(--ft-color-accent-blue); }
+
+.site-footer__main {
+	display: flex;
+	flex-direction: row;
+	gap: 50px;
+	padding: 5%;
+	background-color: #004791;
+}
+
+.site-footer__col {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	flex: 1;
+}
+
+.site-footer__logo { display: block; }
+.site-footer__logo img { max-width: 250px; width: 100%; height: auto; }
+
+.site-footer__social {
+	display: flex;
+	gap: 5px;
+	list-style: none;
+	margin: 1.5rem 0 0;
+	padding: 0;
+}
+.site-footer__social a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background-color: var(--ft-color-accent-blue);
+	color: var(--ft-color-primary);
+}
+.site-footer__social svg { fill: currentColor; }
+.site-footer__social a:hover { text-decoration: none; opacity: .85; }
+
+.site-footer__heading {
+	font-size: 1rem;
+	font-weight: 700;
+	line-height: 1.7rem;
+	color: var(--ft-color-accent-blue);
+}
+
+.site-footer__divider {
+	display: block;
+	width: 10%;
+	border-top: 1px solid var(--ft-color-accent-blue);
+	margin-block: 10px;
+}
+
+.site-footer__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.site-footer__list li + li { margin-block-start: 8px; }
+.site-footer__list a {
+	font-family: var(--ft-font-primary);
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5rem;
+	color: var(--ft-color-white);
+	text-decoration: none;
+	transition: color .3s ease;
+}
+.site-footer__list a:hover { color: #9ECFE7; text-decoration: none; }
+
+/* Copyright strip: Freeman Blue under a 41% black overlay. */
+.site-footer__legal {
+	background-color: #003770;
+	padding: 5px 0;
+	text-align: center;
+}
+.site-footer__legal p {
+	margin: 0;
+	font-family: var(--ft-font-primary);
+	font-size: .7em;
+	font-weight: 400;
+	line-height: 1.5rem;
+	color: var(--ft-color-accent-blue);
+}
+
+@media (max-width: 1024px) {
+	.site-footer__main { flex-wrap: wrap; }
+	.site-footer__col { flex: 0 0 45%; }
+	.site-footer__col--brand { justify-content: center; }
+	.site-footer__legal { padding: 1% 5%; }
+}
+
+@media (max-width: 767px) {
+	.site-footer__main { flex-direction: column; }
+	.site-footer__col { flex: 1 1 100%; width: 100%; }
+}
+
+/* ========================================================== mobile nav === */
+
+.mobile-nav { position: fixed; inset: 0; z-index: 100; }
+.mobile-nav[hidden] { display: none; }
+
+.mobile-nav__backdrop {
+	position: absolute;
+	inset: 0;
+	background-color: rgba(0, 0, 0, .8);
+}
+
+.mobile-nav__panel {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+	width: 100vw;
+	height: 100vh;
+	padding: 100px;
+	overflow-y: auto;
+	background-color: var(--ft-color-primary);
+	animation: ft-slide-in-right .3s ease both;
+}
+
+@keyframes ft-slide-in-right {
+	from { transform: translateX(100%); }
+	to   { transform: translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.mobile-nav__panel { animation: none; }
+}
+
+.mobile-nav__close {
+	position: absolute;
+	top: 24px;
+	inset-inline-end: 24px;
+	background: none;
+	border: 0;
+	color: var(--ft-color-accent-blue);
+	font-size: 2.5rem;
+	line-height: 1;
+	cursor: pointer;
+	padding: 0;
+}
+
+.mobile-nav__mark { display: block; width: 9%; }
+.mobile-nav__mark img { width: 100%; height: auto; }
+
+.mobile-nav__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.mobile-nav__list a {
+	display: block;
+	font-family: var(--ft-font-primary);
+	font-weight: 600;
+	font-size: var(--ft-subtitle-size);
+	line-height: var(--ft-subtitle-line);
+	color: var(--ft-color-accent-blue);
+	text-decoration: none;
+	padding: 8px 0;
+}
+.mobile-nav__list a:hover { text-decoration: none; opacity: .8; }
+.mobile-nav__list .sub-menu { list-style: none; margin: 0; padding-inline-start: 1rem; }
+
+body.ft-nav-open { overflow: hidden; }
+
+@media (max-width: 767px) {
+	.mobile-nav__panel { padding: 50px; }
+	.mobile-nav__mark { width: 19%; }
+}

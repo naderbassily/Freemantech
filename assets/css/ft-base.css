@@ -1,0 +1,175 @@
+/**
+ * Freemantech — design tokens & base layer
+ * Values derived 1:1 from the former Elementor Global Kit (post 7).
+ */
+
+:root {
+	/* Brand colours (Elementor system + custom colours) */
+	--ft-color-primary:   #005DBE; /* Freeman Blue */
+	--ft-color-secondary: #54595F;
+	--ft-color-text:      #000000;
+	--ft-color-accent:    #E8E8E8; /* Accent Grey */
+	--ft-color-accent-blue: #F2F6F8;
+	--ft-color-white:     #FFFFFF;
+
+	/* Font families */
+	--ft-font-primary:   "Inter", sans-serif;
+	--ft-font-secondary: "Inter Tight", sans-serif;
+	--ft-font-text:      "Inter", sans-serif;
+	--ft-font-accent:    "Inter", sans-serif;
+	--ft-font-article:   "Roboto", sans-serif;
+
+	/* Type scale — mirrors the kit's named typography presets */
+	--ft-text-size: 1rem;
+	--ft-text-line: 1.5rem;
+	--ft-text-weight: 400;
+
+	--ft-title-big-size:    4rem;    /* "Big Title"    */
+	--ft-title-big-line:    4.5rem;
+	--ft-title-big-weight:  700;
+
+	--ft-title-md-size:     3rem;    /* "Medium Title" */
+	--ft-title-md-line:     3.5rem;
+	--ft-title-md-weight:   600;
+
+	--ft-title-sm-size:     2rem;    /* "Small Title"  */
+	--ft-title-sm-line:     2.5rem;
+	--ft-title-sm-weight:   700;
+
+	--ft-title-xs-size:     1.3rem;  /* "Xsmall Title" */
+	--ft-title-xs-line:     1.7rem;
+	--ft-title-xs-weight:   700;
+
+	--ft-subtitle-size:     1.5rem;  /* "Subtitle"     */
+	--ft-subtitle-line:     2rem;
+
+	--ft-article-size:      1.2rem;  /* "Article"      */
+	--ft-article-line:      1.4rem;
+	--ft-article-weight:    400;
+
+	/* Layout — Elementor container widths per breakpoint */
+	--ft-container: 1440px;
+	--ft-gutter: 5%;
+
+	/*
+	 * Back-compat aliases.
+	 *
+	 * Elementor used to define these globals. Several theme stylesheets
+	 * (ft-style.css, specs.css, distributors-grid.css, testimonial-carousel.css)
+	 * and inc/resource-filter.php still reference them, as does editor content
+	 * authored while Elementor was active. Keeping the aliases means none of
+	 * that had to change when the plugin was removed.
+	 */
+	--e-global-color-primary:   var(--ft-color-primary);
+	--e-global-color-secondary: var(--ft-color-secondary);
+	--e-global-color-text:      var(--ft-color-text);
+	--e-global-color-accent:    var(--ft-color-accent);
+	--e-global-color-e890308:   var(--ft-color-accent-blue);
+
+	--e-global-typography-primary-font-family:   var(--ft-font-primary);
+	--e-global-typography-primary-font-weight:   600;
+	--e-global-typography-secondary-font-family: var(--ft-font-secondary);
+	--e-global-typography-secondary-font-weight: 400;
+	--e-global-typography-text-font-family:      var(--ft-font-text);
+	--e-global-typography-text-font-size:        var(--ft-text-size);
+	--e-global-typography-text-font-weight:      var(--ft-text-weight);
+	--e-global-typography-text-line-height:      var(--ft-text-line);
+	--e-global-typography-accent-font-family:    var(--ft-font-accent);
+	--e-global-typography-accent-font-weight:    500;
+}
+
+/* Elementor breakpoints: laptop 1366, tablet 1024, mobile 767 */
+@media (max-width: 1366px) { :root { --ft-container: 1280px; } }
+@media (max-width: 1024px) { :root { --ft-container: 1024px; } }
+@media (max-width: 767px)  { :root { --ft-container: 767px;  } }
+
+/* ---------------------------------------------------------------- base --- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+	margin: 0;
+	color: var(--ft-color-text);
+	font-family: var(--ft-font-text);
+	font-size: var(--ft-text-size);
+	font-weight: var(--ft-text-weight);
+	line-height: var(--ft-text-line);
+	background-color: var(--ft-color-white);
+	-webkit-font-smoothing: antialiased;
+}
+
+img, svg, video { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--ft-color-primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	font-family: var(--ft-font-primary);
+	color: inherit;
+}
+
+p { margin: 0 0 1rem; }
+p:last-child { margin-bottom: 0; }
+
+/* ----------------------------------------------------------- utilities --- */
+
+.ft-container {
+	width: 100%;
+	max-width: var(--ft-container);
+	margin-inline: auto;
+	padding-inline: var(--ft-gutter);
+}
+
+/* Full-bleed container that still caps its inner content */
+.ft-section { width: 100%; }
+
+.ft-title-big { font-size: var(--ft-title-big-size); line-height: var(--ft-title-big-line); font-weight: var(--ft-title-big-weight); }
+.ft-title-md  { font-size: var(--ft-title-md-size);  line-height: var(--ft-title-md-line);  font-weight: var(--ft-title-md-weight); }
+.ft-title-sm  { font-size: var(--ft-title-sm-size);  line-height: var(--ft-title-sm-line);  font-weight: var(--ft-title-sm-weight); }
+.ft-title-xs  { font-size: var(--ft-title-xs-size);  line-height: var(--ft-title-xs-line);  font-weight: var(--ft-title-xs-weight); }
+.ft-subtitle  { font-size: var(--ft-subtitle-size);  line-height: var(--ft-subtitle-line); }
+.ft-article   { font-family: var(--ft-font-article); font-size: var(--ft-article-size); line-height: var(--ft-article-line); font-weight: var(--ft-article-weight); }
+
+.ft-screen-reader-text {
+	border: 0;
+	clip-path: inset(50%);
+	height: 1px; width: 1px;
+	margin: -1px; padding: 0;
+	overflow: hidden; position: absolute;
+	white-space: nowrap;
+}
+
+/* Responsive visibility helpers (replaces elementor-hidden-*) */
+@media (min-width: 1025px) { .ft-hide-desktop { display: none !important; } }
+@media (max-width: 1024px) { .ft-hide-tablet  { display: none !important; } }
+@media (max-width: 767px)  { .ft-hide-mobile  { display: none !important; } }
+@media (min-width: 768px)  { .ft-only-mobile  { display: none !important; } }
+
+/* ------------------------------------------------------------- buttons --- */
+
+.ft-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: .5rem;
+	font-family: var(--ft-font-accent);
+	font-weight: 500;
+	line-height: 1.2;
+	text-decoration: none;
+	border: 1px solid transparent;
+	border-radius: 2px;
+	padding: .75rem 1.75rem;
+	cursor: pointer;
+	transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+.ft-btn:hover { text-decoration: none; }
+
+.ft-btn--blue { background-color: var(--ft-color-primary); color: var(--ft-color-white); }
+.ft-btn--blue:hover { background-color: #00499a; color: var(--ft-color-white); }
+
+.ft-btn--white { background-color: var(--ft-color-white); color: var(--ft-color-primary); }
+.ft-btn--white:hover { background-color: var(--ft-color-accent-blue); }
+
+.ft-btn--outline { background-color: transparent; color: var(--ft-color-primary); border-color: var(--ft-color-primary); }
+.ft-btn--outline:hover { background-color: var(--ft-color-primary); color: var(--ft-color-white); }
