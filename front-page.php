@@ -142,7 +142,6 @@ $freemantech_intro_image = freemantech_asset_url( '2026/01/a2015a30-9320-4582-94
 
 				<button class="ft-carousel__prev" type="button" aria-label="<?php esc_attr_e( 'Previous', 'freemantech' ); ?>"></button>
 				<button class="ft-carousel__next" type="button" aria-label="<?php esc_attr_e( 'Next', 'freemantech' ); ?>"></button>
-				<div class="ft-carousel__pagination"></div>
 			</div>
 			<?php
 		endif;

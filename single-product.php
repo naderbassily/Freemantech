@@ -227,7 +227,6 @@ while ( have_posts() ) :
 
 					<button class="ft-carousel__prev" type="button" aria-label="<?php esc_attr_e( 'Previous', 'freemantech' ); ?>"></button>
 					<button class="ft-carousel__next" type="button" aria-label="<?php esc_attr_e( 'Next', 'freemantech' ); ?>"></button>
-					<div class="ft-carousel__pagination"></div>
 				</div>
 				<?php
 			endif;

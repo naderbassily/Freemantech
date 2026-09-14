@@ -120,22 +120,6 @@
 .ft-carousel__prev.swiper-button-disabled,
 .ft-carousel__next.swiper-button-disabled { opacity: .35; cursor: default; }
 
-.ft-carousel__pagination {
-	display: flex;
-	justify-content: center;
-	gap: 7px;
-	margin-top: 23px;
-}
-.ft-carousel__pagination .swiper-pagination-bullet {
-	width: 8px; height: 8px;
-	border-radius: 50%;
-	background-color: var(--ft-color-accent);
-	opacity: 1;
-	border: 0;
-	cursor: pointer;
-}
-.ft-carousel__pagination .swiper-pagination-bullet-active { background-color: var(--ft-color-primary); }
-
 @media (max-width: 1366px) {
 	.ft-carousel__prev { inset-inline-start: -8px; }
 	.ft-carousel__next { inset-inline-end: -8px; }

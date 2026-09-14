@@ -26,10 +26,6 @@
 						prevEl: el.querySelector( '.ft-carousel__prev' ),
 						nextEl: el.querySelector( '.ft-carousel__next' )
 					},
-					pagination: {
-						el: el.querySelector( '.ft-carousel__pagination' ),
-						clickable: true
-					},
 					breakpoints: {
 						768: { slidesPerView: Math.min( 2, perView ) },
 						1025: { slidesPerView: perView }
