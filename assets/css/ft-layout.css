@@ -134,8 +134,17 @@
 
 /* ---- header responsive ---- */
 
-@media (max-width: 1366px) {
+/*
+ * Keep the header gutter in step with .main-flow, which pads by 5% up to
+ * 1440px. Elementor only padded the header below 1366, so between 1367 and
+ * 1440 the logo and search sat hard against the window edge while the content
+ * below them was inset.
+ */
+@media (max-width: 1440px) {
 	.site-header__main { padding-inline: 5%; }
+}
+
+@media (max-width: 1366px) {
 	.site-header__actions { gap: 10px; }
 	.site-header__branding { width: 20%; }
 	.site-nav__list a { padding: 0 11px; }

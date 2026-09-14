@@ -129,3 +129,18 @@ Known causes of the remaining deltas:
   size capped by its column, which is the behaviour Elementor had.
 - **Single accessory** renders the featured image column at the declared 25%
   (324px) where Elementor's flex sizing settled on 249px.
+
+## Deliberate deviations from the live site
+
+These are places where the theme intentionally differs, rather than parity bugs:
+
+- **Header gutter.** Elementor padded the header by 5% only below 1366px, so
+  between 1367px and 1440px the logo and search sat hard against the window
+  edge while the content below was inset by 72px. The header now shares
+  `.main-flow`'s gutter at every width, so the logo lines up with the content's
+  left edge and the search with its right.
+- **Search results.** Rebuilt to read like the Resource Library listing, with a
+  proper empty state, rather than reproducing the sparse default.
+- **Content link colour.** Editor links on pages render in Freeman Blue. Live
+  renders them `royalblue`, an underscores default that Elementor never
+  overrode outside article templates.
