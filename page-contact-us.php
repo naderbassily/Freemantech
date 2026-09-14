@@ -77,7 +77,7 @@ while ( have_posts() ) :
 
 		<section class="ft-distributors">
 
-			<h2 class="ft-distributors__title ft-title-sm"><?php esc_html_e( 'Distributor Information', 'freemantech' ); ?></h2>
+			<h2 class="ft-distributors__title ft-title-xs"><?php esc_html_e( 'Distributor Information', 'freemantech' ); ?></h2>
 
 			<p>
 				<?php

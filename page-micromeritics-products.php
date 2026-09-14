@@ -13,7 +13,7 @@ get_header();
 <main id="primary" class="site-main main-flow ft-page ft-page--mic">
 
 	<header class="ft-page__intro">
-		<h1 class="ft-page__title ft-title-sm"><?php esc_html_e( 'Micromeritics Product', 'freemantech' ); ?></h1>
+		<h1 class="ft-page__title ft-title-md"><?php esc_html_e( 'Micromeritics Product', 'freemantech' ); ?></h1>
 
 		<div class="ft-page__intro-text">
 			<p>

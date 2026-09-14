@@ -146,7 +146,8 @@
 	background-color: var(--ft-color-accent-blue);
 }
 
-.ft-contact__details { margin-top: 20px; }
+/* Was an Elementor spacer widget between the link tiles and the address. */
+.ft-contact__details { margin-top: 60px; }
 .ft-contact__details-title {
 	font-family: var(--ft-font-primary);
 	font-weight: 600;
