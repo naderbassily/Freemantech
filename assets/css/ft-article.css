@@ -5,6 +5,9 @@
 
 /* ================================================================== hero == */
 
+/* Hero and content row were separate containers 50px apart. */
+.ft-article { display: flex; flex-direction: column; gap: 50px; }
+
 .ft-article__hero {
 	position: relative;
 	display: flex;

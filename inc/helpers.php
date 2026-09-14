@@ -119,9 +119,12 @@ add_action( 'after_setup_theme', 'freemantech_register_menus', 11 );
  * Query posts related to the given one.
  *
  * Elementor's "Related" loop source had no taxonomy selected, so in practice it
- * listed the most recent posts of the same post type. This reproduces that,
- * with one deliberate change: the post being viewed is excluded, where the
- * Elementor version could list the current article under "Related:".
+ * listed the most recent posts of the same post type, excluding the one being
+ * viewed.
+ *
+ * Several resources share an identical post_date, so date alone leaves the
+ * tail of the list to MySQL's discretion and it can differ between installs.
+ * ID descending is the tiebreaker that reproduces the live ordering.
  *
  * @param int $post_id Post to find relatives for.
  * @param int $limit   Maximum posts to return.
@@ -133,8 +136,10 @@ function freemantech_related_query( $post_id, $limit = 10 ) {
 			'post_type'           => get_post_type( $post_id ),
 			'post__not_in'        => array( $post_id ),
 			'posts_per_page'      => $limit,
-			'orderby'             => 'date',
-			'order'               => 'DESC',
+			'orderby'             => array(
+				'date' => 'DESC',
+				'ID'   => 'DESC',
+			),
 			'ignore_sticky_posts' => true,
 			'no_found_rows'       => true,
 		)
@@ -190,6 +195,16 @@ function freemantech_jotform( $form_id ) {
  *    contain a bare "<" (for example "sizes <10 μm"). wp_kses_post() keeps the
  *    real markup and escapes the stray "<", where the_excerpt() would treat it
  *    as a tag and swallow the rest of the sentence.
+ */
+function freemantech_has_excerpt() {
+	return '' !== trim( (string) get_post_field( 'post_excerpt', get_the_ID() ) );
+}
+
+/**
+ * Output the excerpt. See freemantech_has_excerpt() for why callers should
+ * skip the wrapper element entirely when there is nothing to show: Elementor
+ * dropped widgets whose dynamic tag came back empty, so an empty wrapper adds
+ * flex gaps the original never had.
  */
 function freemantech_the_excerpt() {
 	$excerpt = get_post_field( 'post_excerpt', get_the_ID() );
