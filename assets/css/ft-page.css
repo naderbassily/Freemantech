@@ -202,3 +202,56 @@
 	.ft-distributor { flex-direction: column; align-items: flex-start; }
 	.ft-distributor__flag { width: auto; }
 }
+
+/* ------------------------------------------------------- single accessory - */
+
+.ft-accessory { display: flex; flex-direction: column; gap: 50px; }
+
+.ft-accessory__intro {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 50px;
+}
+
+.ft-accessory__media { width: 25%; min-width: 0; }
+.ft-accessory__media img { width: 100%; height: auto; }
+
+.ft-accessory__body { display: flex; flex-direction: column; gap: 30px; flex: 1; min-width: 0; }
+.ft-accessory__title { color: var(--ft-color-primary); margin: 0; }
+.ft-accessory__content { width: 60%; }
+
+@media (max-width: 1024px) {
+	.ft-accessory__content { width: 100%; }
+}
+
+@media (max-width: 767px) {
+	.ft-accessory__intro { flex-direction: column; align-items: flex-start; gap: 25px; }
+	.ft-accessory__media { width: 60%; }
+}
+
+/* ------------------------------------------------------------------- 404 - */
+
+.ft-404 {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	min-height: 60vh;
+	padding-block: 100px;
+	gap: 0;
+}
+
+.ft-404__title {
+	font-size: var(--ft-title-big-size);
+	font-weight: var(--ft-title-big-weight);
+	line-height: var(--ft-title-big-line);
+	color: var(--ft-color-secondary);
+	margin: 0;
+}
+
+/* Replaces the Elementor spacer that sat above the link. */
+.ft-404__home { margin-top: 25px; }
+
+@media (max-width: 767px) {
+	.ft-404__title { font-size: 2.4rem; line-height: 2.8rem; }
+}

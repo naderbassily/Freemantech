@@ -143,6 +143,15 @@ function freemantech_scripts() {
 	wp_enqueue_style( 'freemantech-article', get_template_directory_uri() . '/assets/css/ft-article.css', array( 'freemantech-base' ), _S_VERSION );
 	wp_enqueue_style( 'freemantech-archive', get_template_directory_uri() . '/assets/css/ft-archive.css', array( 'freemantech-base' ), _S_VERSION );
 	wp_enqueue_style( 'freemantech-page', get_template_directory_uri() . '/assets/css/ft-page.css', array( 'freemantech-base' ), _S_VERSION );
+	wp_enqueue_style( 'freemantech-product', get_template_directory_uri() . '/assets/css/ft-product.css', array( 'freemantech-base' ), _S_VERSION );
+
+	if ( is_singular( 'product' ) ) {
+		wp_enqueue_style( 'freemantech-powder-chart', get_template_directory_uri() . '/assets/css/ft-powder-chart.css', array( 'freemantech-base' ), _S_VERSION );
+		wp_enqueue_script( 'freemantech-powder-chart', get_template_directory_uri() . '/js/ft-powder-chart.js', array(), _S_VERSION, true );
+		wp_enqueue_script( 'freemantech-sticky-nav', get_template_directory_uri() . '/js/ft-sticky-nav.js', array(), _S_VERSION, true );
+	}
+
+	wp_enqueue_script( 'freemantech-tabs', get_template_directory_uri() . '/js/ft-tabs.js', array(), _S_VERSION, true );
 
 	wp_enqueue_script( 'freemantech-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'freemantech-mobile-nav', get_template_directory_uri() . '/js/mobile-nav.js', array(), _S_VERSION, true );

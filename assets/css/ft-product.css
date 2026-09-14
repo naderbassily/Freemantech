@@ -1,0 +1,228 @@
+/**
+ * Freemantech — single product page.
+ * Replaces Elementor template 281.
+ */
+
+.ft-product { display: flex; flex-direction: column; gap: 40px; margin-bottom: 50px; }
+
+.ft-product__heading { color: var(--ft-color-primary); }
+
+.ft-product__rule { border: 0; border-top: 1px solid var(--ft-color-accent); margin: 0; }
+
+/* ------------------------------------------------------------------ hero - */
+
+.ft-product__hero { display: flex; flex-direction: column; gap: 25px; border-radius: 10px; }
+
+.ft-product__banner {
+	display: flex;
+	flex-direction: row;
+	min-height: 40vh;
+	border-radius: 10px;
+	overflow: hidden;
+	background-color: var(--ft-color-text);
+}
+
+.ft-product__banner-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	gap: 50px;
+	padding: 30px 50px;
+	flex: 1;
+}
+
+.ft-product__title {
+	font-size: 55px;
+	font-weight: 700;
+	line-height: 1.1;
+	color: var(--ft-color-white);
+	margin: 0;
+}
+
+.ft-product__lead {
+	font-size: var(--ft-subtitle-size);
+	line-height: var(--ft-subtitle-line);
+	color: var(--ft-color-white);
+	margin: 0;
+}
+
+.ft-product__cta { display: flex; flex-direction: row; gap: 25px; flex-wrap: wrap; }
+
+.ft-product__banner-media { display: flex; flex: 1; align-items: center; justify-content: center; }
+.ft-product__banner-media img { height: 500px; width: 100%; object-fit: contain; }
+
+/* ------------------------------------------------------------ inner nav - */
+
+.inner-nav {
+	position: sticky;
+	top: 0;
+	z-index: 15;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	background-color: var(--ft-color-white);
+	transition: padding .35s ease;
+}
+
+/* The logo only fades in once the bar sticks. */
+.inner-logo { width: 20%; display: flex; flex-direction: column; justify-content: center; opacity: 0; transition: opacity .35s ease; }
+.inner-logo img { max-width: 203px; width: 100%; height: auto; }
+
+.inner-nav.is-stuck { padding: 20px 0; border-bottom: 1px solid var(--ft-color-accent-blue); }
+.inner-nav.is-stuck .inner-logo { opacity: 1; }
+
+.inner-nav__items { display: flex; flex-direction: row; align-items: center; justify-content: flex-end; gap: 25px; width: 80%; }
+
+.inner-nav__list { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; }
+.inner-nav__list a {
+	font-family: var(--ft-font-primary);
+	font-weight: 500;
+	color: var(--ft-color-text);
+	text-decoration: none;
+}
+.inner-nav__list a:hover { color: var(--ft-color-primary); text-decoration: none; }
+
+/* ----------------------------------------------------------- intro/tiles - */
+
+.ft-product__intro { display: flex; flex-direction: row; gap: 50px; border-radius: 10px; overflow: hidden; }
+
+.ft-product__intro-body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 25px;
+	width: 60%;
+	min-width: 0;
+	background-color: var(--ft-color-white);
+}
+.ft-product__intro-body ul { padding-inline-start: 1.2rem; }
+
+.ft-product__intro-media {
+	width: 40%;
+	min-height: 320px;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.ft-product__tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+
+.ft-product__tile {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 5px;
+	padding: 25px;
+	border-radius: 10px;
+	background-color: var(--ft-color-accent-blue);
+}
+.ft-product__tile-lead {
+	font-size: var(--ft-title-sm-size);
+	font-weight: var(--ft-title-sm-weight);
+	line-height: var(--ft-title-sm-line);
+	color: var(--ft-color-primary);
+	margin: 0;
+}
+.ft-product__tile p:last-child { margin: 0; }
+
+/* --------------------------------------------------------- methodologies - */
+
+.ft-product__methodologies { display: flex; flex-direction: row; gap: 50px; border-radius: 10px; }
+
+.ft-product__methodologies-body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 25px;
+	width: 40%;
+	min-width: 0;
+	background-color: var(--ft-color-white);
+}
+
+.ft-product__method-links { display: flex; flex-direction: column; gap: 13px; }
+
+.ft-product__note {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	padding: 20px;
+	border-radius: 5px;
+	background-color: var(--ft-color-accent-blue);
+}
+.ft-product__note-title { color: var(--ft-color-primary); margin: 0; }
+
+.ft-product__chart { width: 60%; min-width: 0; display: flex; justify-content: center; }
+
+/* ---------------------------------------------------------------- tabs -- */
+
+.ft-product__hiw { display: flex; flex-direction: column; gap: 25px; border-radius: 10px; }
+
+.ft-tabs { display: flex; flex-direction: column; gap: 25px; }
+
+.ft-tabs__list { display: flex; flex-wrap: wrap; gap: 25px; justify-content: flex-start; }
+
+.ft-tabs__tab {
+	font-family: var(--ft-font-primary);
+	font-size: var(--ft-text-size);
+	background-color: transparent;
+	border: 1px solid var(--ft-color-accent);
+	border-radius: 5px;
+	padding: .6rem 1.2rem;
+	cursor: pointer;
+	color: var(--ft-color-text);
+	transition: border-color .2s ease, color .2s ease;
+}
+.ft-tabs__tab:hover { border-color: var(--ft-color-primary); }
+.ft-tabs__tab.is-active { border-color: var(--ft-color-primary); color: var(--ft-color-primary); }
+
+.ft-tabs__panel { display: flex; flex-direction: row; gap: 25px; }
+.ft-tabs__panel[hidden] { display: none; }
+
+.ft-tabs__text { display: flex; flex-direction: column; justify-content: center; width: 50%; min-width: 0; }
+.ft-tabs__media { width: 50%; min-width: 0; }
+.ft-tabs__media img { width: 100%; height: auto; }
+
+.ft-tabs__media--boxed {
+	padding: 20px;
+	border-radius: 5px;
+	background-color: var(--ft-color-accent);
+}
+.ft-tabs__media--boxed img { height: 300px; object-fit: contain; }
+
+/* --------------------------------------------------------------- others - */
+
+.ft-product__others { display: flex; flex-direction: row; gap: 50px; }
+.ft-product__other { display: flex; flex-direction: column; gap: 25px; width: 50%; min-width: 0; }
+.ft-product__other-sub { color: var(--ft-color-primary); margin: 0; }
+.ft-product__other-text { min-height: 160px; }
+
+.ft-product__applications,
+.ft-product__specs { display: flex; flex-direction: column; gap: 25px; }
+
+/* ----------------------------------------------------------- responsive - */
+
+@media (max-width: 1024px) {
+	.ft-product__intro,
+	.ft-product__methodologies,
+	.ft-product__others { flex-wrap: wrap; }
+	.ft-product__intro-body,
+	.ft-product__intro-media,
+	.ft-product__methodologies-body,
+	.ft-product__chart,
+	.ft-product__other { width: 100%; }
+	.ft-product__tiles { grid-template-columns: repeat(2, 1fr); }
+	.inner-nav__list { flex-wrap: wrap; gap: 12px; }
+}
+
+@media (max-width: 767px) {
+	.ft-product__banner { flex-direction: column; }
+	.ft-product__title { font-size: 36px; }
+	.ft-product__banner-media img { height: 320px; }
+	.ft-product__tiles { grid-template-columns: 1fr; }
+	.ft-tabs__panel { flex-direction: column; }
+	.ft-tabs__text,
+	.ft-tabs__media { width: 100%; }
+	.inner-nav { display: none; }
+}
