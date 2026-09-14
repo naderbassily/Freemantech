@@ -71,6 +71,20 @@ p {
 
 }
 
+/*
+ * Per-template top margins. Elementor set these on each template's outer
+ * container; .main-flow only carries the shared 100px bottom margin.
+ */
+.ft-page--doc,
+.ft-page--mic,
+.ft-accessory,
+.ft-archive--resources,
+.ft-archive--accessories { margin-top: 100px; }
+
+.ft-archive--products { margin-top: 50px; }
+
+.ft-product { margin-bottom: 50px; }
+
 @media (max-width: 1440px) {
   .main-flow {
     padding: 0 5%;

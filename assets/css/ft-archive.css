@@ -7,7 +7,10 @@
 
 /* --------------------------------------------------------------- intros -- */
 
-.ft-archive__intro { display: flex; flex-direction: column; gap: 25px; }
+/* The accessories/products intros ran title and lead together; only the
+   resources archive spaced them. */
+.ft-archive__intro { display: flex; flex-direction: column; gap: 0; }
+.ft-archive--resources .ft-archive__intro { gap: 25px; }
 
 .ft-archive--resources .ft-archive__intro { width: 72%; }
 .ft-archive--resources .ft-archive__title {
@@ -52,7 +55,7 @@
 	z-index: 1;
 	font-size: 55px;
 	font-weight: 700;
-	line-height: 1.1;
+	line-height: 1;
 	color: var(--ft-color-white);
 	text-align: start;
 	margin: 0;
@@ -66,6 +69,8 @@
 	grid-auto-rows: 1fr;
 }
 .ft-archive__grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+/* The applications loop grid used Elementor's 30px default gap. */
+.ft-archive--applications .ft-archive__grid { gap: 30px; }
 .ft-archive__grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
 .ft-archive__accessories { display: flex; flex-direction: column; gap: 50px; margin-block: 50px 100px; }
@@ -109,7 +114,6 @@
 
 @media (max-width: 1024px) {
 	.ft-archive--resources .ft-archive__intro { width: 100%; }
-	.ft-archive__lead { width: 100%; }
 	.ft-archive__grid--4,
 	.ft-archive__grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 	.ft-feature-panel { flex-wrap: wrap; }

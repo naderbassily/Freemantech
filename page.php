@@ -11,7 +11,7 @@
 get_header();
 ?>
 
-<main id="primary" class="site-main main-flow ft-page">
+<main id="primary" class="site-main main-flow ft-page ft-page--doc">
 
 	<?php
 	while ( have_posts() ) :
