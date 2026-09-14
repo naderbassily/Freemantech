@@ -90,6 +90,12 @@ add_shortcode('software_table', 'render_software_repeater_table');
  * Enqueue styles for the software repeater table
  */
 function enqueue_software_repeater_styles() {
+    // The stylesheet has never existed, so this 404'd on every page. Only ask
+    // for it if it is actually there.
+    if ( ! file_exists( get_template_directory() . '/assets/css/software-repeater-table.css' ) ) {
+        return;
+    }
+
     wp_enqueue_style(
         'software-repeater-table',
         get_template_directory_uri() . '/assets/css/software-repeater-table.css',

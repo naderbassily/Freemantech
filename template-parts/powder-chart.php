@@ -31,33 +31,33 @@
 
     <!-- Center Circle -->
     <div class="circle center-circle" aria-hidden="true">
-        <img src="http://freeman-wp.local/wp-content/uploads/2026/02/Ft4-illlustration.svg" width="80px">
+        <img src="<?php echo esc_url( freemantech_asset_url( '2026/02/Ft4-illlustration.svg' ) ); ?>" width="80" height="94" alt="">
     </div>
 
     <!-- Primary Circles -->
     <div class="circle primary-circle bulk" data-category="bulk">
       <!-- Bulk/Container Icon -->
-     <img src="http://freeman-wp.local/wp-content/uploads/2026/02/bulk-icon.svg" width="60px">
+     <img src="<?php echo esc_url( freemantech_asset_url( '2026/02/bulk-icon.svg' ) ); ?>" width="60" height="45" alt="">
       <div>Bulk</div>
     </div>
 
     <div class="circle primary-circle shear" data-category="shear">
       <!-- Shear/Tilted Square Icon -->
-           <img src="http://freeman-wp.local/wp-content/uploads/2026/02/shear.svg" width="60px">
+           <img src="<?php echo esc_url( freemantech_asset_url( '2026/02/shear.svg' ) ); ?>" width="60" height="65" alt="">
 
       <div>Shear</div>
     </div>
 
     <div class="circle primary-circle dynamic-flow" data-category="dynamic">
       <!-- Flow/Wave Icon -->
-          <img src="http://freeman-wp.local/wp-content/uploads/2026/02/dynamic-flow.svg" width="60px">
+          <img src="<?php echo esc_url( freemantech_asset_url( '2026/02/dynamic-flow.svg' ) ); ?>" width="60" height="34" alt="">
 
       <div>Dynamic<br />Flow</div>
     </div>
 
     <div class="circle primary-circle process" data-category="process">
       <!-- Process/Gear Icon -->
-           <img src="http://freeman-wp.local/wp-content/uploads/2026/02/process.svg" width="60px">
+           <img src="<?php echo esc_url( freemantech_asset_url( '2026/02/process.svg' ) ); ?>" width="60" height="61" alt="">
 
       <div>Process</div>
     </div>
