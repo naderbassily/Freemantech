@@ -18,7 +18,7 @@ get_header();
 		the_post();
 		?>
 		<article <?php post_class( 'ft-page__article' ); ?>>
-			<h1 class="ft-page__title ft-title-sm"><?php the_title(); ?></h1>
+			<h1 class="ft-page__title ft-title-md"><?php the_title(); ?></h1>
 
 			<div class="ft-page__content entry-content">
 				<?php the_content(); ?>

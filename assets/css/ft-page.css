@@ -14,6 +14,9 @@
 .ft-accessory__content.entry-content { margin-top: 0; }
 
 .ft-page__title { color: var(--ft-color-primary); }
+
+/* Title and content were separate widgets 50px apart. */
+.ft-page__article { display: flex; flex-direction: column; gap: 50px; }
 .ft-page__intro { display: flex; flex-direction: column; gap: 25px; }
 .ft-page__intro-text { width: 100%; }
 
