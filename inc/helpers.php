@@ -114,3 +114,48 @@ function freemantech_register_menus() {
 	);
 }
 add_action( 'after_setup_theme', 'freemantech_register_menus', 11 );
+
+/**
+ * Query posts related to the given one.
+ *
+ * Reproduces Elementor's "Related" loop source: same post type, sharing at
+ * least one term in any of that post type's taxonomies, most recent first.
+ *
+ * @param int $post_id Post to find relatives for.
+ * @param int $limit   Maximum posts to return.
+ * @return WP_Query|null
+ */
+function freemantech_related_query( $post_id, $limit = 10 ) {
+	$post_type  = get_post_type( $post_id );
+	$taxonomies = get_object_taxonomies( $post_type );
+	$tax_query  = array( 'relation' => 'OR' );
+
+	foreach ( $taxonomies as $taxonomy ) {
+		$terms = wp_get_object_terms( $post_id, $taxonomy, array( 'fields' => 'ids' ) );
+
+		if ( ! is_wp_error( $terms ) && $terms ) {
+			$tax_query[] = array(
+				'taxonomy' => $taxonomy,
+				'field'    => 'term_id',
+				'terms'    => $terms,
+			);
+		}
+	}
+
+	$args = array(
+		'post_type'           => $post_type,
+		'post__not_in'        => array( $post_id ),
+		'posts_per_page'      => $limit,
+		'ignore_sticky_posts' => true,
+		'no_found_rows'       => true,
+	);
+
+	// Only constrain by taxonomy when the post actually has terms.
+	if ( count( $tax_query ) > 1 ) {
+		$args['tax_query'] = $tax_query; // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
+	}
+
+	$query = new WP_Query( $args );
+
+	return $query->have_posts() ? $query : null;
+}

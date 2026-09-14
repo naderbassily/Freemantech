@@ -78,7 +78,11 @@
 
 /* ============================================================== carousel == */
 
-.ft-carousel { position: relative; }
+/*
+ * width/min-width are explicit: as a flex item the .swiper element otherwise
+ * resolves its width from its own (very wide) slide content.
+ */
+.ft-carousel { position: relative; width: 100%; min-width: 0; max-width: 100%; }
 .ft-carousel .swiper-wrapper { align-items: stretch; }
 .ft-carousel .swiper-slide { height: auto; display: flex; }
 .ft-carousel .swiper-slide > * { width: 100%; }

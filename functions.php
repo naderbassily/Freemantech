@@ -140,10 +140,12 @@ function freemantech_scripts() {
 	wp_enqueue_style( 'freemantech-base', get_template_directory_uri() . '/assets/css/ft-base.css', array(), _S_VERSION );
 	wp_enqueue_style( 'freemantech-layout', get_template_directory_uri() . '/assets/css/ft-layout.css', array( 'freemantech-base' ), _S_VERSION );
 	wp_enqueue_style( 'freemantech-components', get_template_directory_uri() . '/assets/css/ft-components.css', array( 'freemantech-base' ), _S_VERSION );
+	wp_enqueue_style( 'freemantech-article', get_template_directory_uri() . '/assets/css/ft-article.css', array( 'freemantech-base' ), _S_VERSION );
 
 	wp_enqueue_script( 'freemantech-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'freemantech-mobile-nav', get_template_directory_uri() . '/js/mobile-nav.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'freemantech-carousel', get_template_directory_uri() . '/js/ft-carousel.js', array( 'swiper-js' ), _S_VERSION, true );
+	wp_enqueue_script( 'freemantech-back-to-top', get_template_directory_uri() . '/js/ft-back-to-top.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

@@ -30,6 +30,14 @@
 .simple-read-more:hover::before {
   transform: translateX(4px);
 }
+/*
+ * The link inside carries the colour of its .btn-* wrapper. Elementor styled
+ * the wrapper and let the anchor inherit; the theme's global `a` colour would
+ * otherwise win.
+ */
+.simple-read-more a { color: inherit; text-decoration: none; }
+.simple-read-more a:hover { text-decoration: none; }
+
 /* Blue version */
 .simple-read-more.btn-blue {
   color: var(--e-global-color-primary) !important;
