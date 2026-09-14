@@ -1,0 +1,208 @@
+/* Product Specifications Styles - Exact Match */
+.mp-specs {
+  width: 100%;
+  background: var(--e-global-color-e890308);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Tabs */
+.mp-specs__tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  background: transparent;
+}
+
+.mp-specs__tab {
+  padding: 10px 22px;
+  border: none;
+  border-radius: 25px;
+  background: white;
+  color: #333;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  box-shadow: none;
+}
+
+.mp-specs__tab:hover {
+  background: #f5f5f5;
+}
+
+.mp-specs__tab.is-active {
+  background: var(--e-global-color-primary);
+  color: white;
+}
+
+/* Panels */
+.mp-specs__panels {
+  background: transparent;
+  padding: 0;
+}
+
+.mp-specs__panel {
+  display: none;
+}
+
+.mp-specs__panel.is-active {
+  display: block;
+
+}
+
+/* Rows Container */
+.mp-specs__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  
+}
+
+/* Individual Row */
+.mp-specs__row {
+  display: grid;
+  grid-template-columns: 50% 1fr;
+  align-items: center;
+  gap: 30px;
+    border-radius: 10px;
+
+  padding: 5px 24px;
+  background: white;
+  border-bottom: none;
+  transition: none;
+}
+
+/* Alternating row colors - striped pattern */
+.mp-specs__row:nth-child(even) {
+  background: #f8f9fa;
+}
+
+.mp-specs__row:first-child {
+  padding-top: 18px;
+}
+
+.mp-specs__row:last-child {
+  padding-bottom: 18px;
+}
+
+/* Label */
+.mp-specs__label {
+  font-weight: 600;
+  color: #2c2c2c;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* Value - Now supports WYSIWYG content */
+.mp-specs__value {
+  color: #555;
+  font-size: 15px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* WYSIWYG Content Styling */
+.mp-specs__value p {
+  margin: 0 0 0.75em 0;
+}
+
+.mp-specs__value p:last-child {
+  margin-bottom: 0;
+}
+
+.mp-specs__value ul,
+.mp-specs__value ol {
+  margin: 0.5em 0;
+  padding-left: 1.5em;
+}
+
+.mp-specs__value li {
+  margin-bottom: 0.25em;
+}
+
+.mp-specs__value strong,
+.mp-specs__value b {
+  font-weight: 600;
+  color: #2c2c2c;
+}
+
+.mp-specs__value em,
+.mp-specs__value i {
+  font-style: italic;
+}
+
+.mp-specs__value a {
+  color: #0d7373;
+  text-decoration: underline;
+}
+
+.mp-specs__value a:hover {
+  color: #0a5656;
+}
+
+.mp-specs__value img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0.5em 0;
+}
+
+.mp-specs__value h1,
+.mp-specs__value h2,
+.mp-specs__value h3,
+.mp-specs__value h4,
+.mp-specs__value h5,
+.mp-specs__value h6 {
+  margin: 0.75em 0 0.5em 0;
+  font-weight: 600;
+  color: #2c2c2c;
+}
+
+.mp-specs__value blockquote {
+  margin: 1em 0;
+  padding-left: 1em;
+  border-left: 3px solid #0d7373;
+  color: #666;
+}
+
+/* Empty State */
+.mp-specs__empty {
+  padding: 40px 20px;
+  text-align: center;
+  color: #999;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .mp-specs {
+    padding: 20px 15px;
+  }
+  
+  .mp-specs__tabs {
+    gap: 6px;
+    margin-bottom: 15px;
+  }
+  
+  .mp-specs__tab {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+  
+  .mp-specs__row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 14px 0;
+  }
+  
+  .mp-specs__label {
+    font-size: 14px;
+    font-weight: 700;
+  }
+  
+  .mp-specs__value {
+    font-size: 14px;
+  }
+}
