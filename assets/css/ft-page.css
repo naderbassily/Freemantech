@@ -124,8 +124,9 @@
 .ft-contact-block__title { color: var(--ft-color-primary); text-align: center; }
 .ft-contact-block__text { text-align: center; margin: 0; }
 
+/* The wrapper reserves the form's height so nothing jumps when it arrives. */
 .ft-jotform { width: 100%; }
-.ft-jotform iframe { width: 100% !important; border: 0; }
+.ft-jotform iframe { width: 100% !important; min-width: 100%; max-width: 100%; border: 0; display: block; }
 
 /* --------------------------------------------------------------- contact - */
 

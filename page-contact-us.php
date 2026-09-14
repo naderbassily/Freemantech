@@ -33,7 +33,7 @@ while ( have_posts() ) :
 					<?php esc_html_e( 'Submit your enquiry and we’ll respond promptly.', 'freemantech' ); ?>
 				</h2>
 
-				<?php freemantech_jotform( '232205999688171' ); ?>
+				<?php freemantech_jotform( '232205999688171', 836 ); ?>
 			</div>
 
 			<aside class="ft-contact__info">

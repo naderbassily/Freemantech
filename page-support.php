@@ -39,7 +39,7 @@ while ( have_posts() ) :
 				<?php esc_html_e( 'Contact our team of technical support specialists for assistance with your instruments. We’ll work with you to answer any questions, address issues remotely, and determine the next steps.', 'freemantech' ); ?>
 			</p>
 
-			<?php freemantech_jotform( '243436558978172' ); ?>
+			<?php freemantech_jotform( '243436558978172', 716 ); ?>
 		</section>
 
 	</main><!-- #primary -->

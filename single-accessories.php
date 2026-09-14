@@ -40,7 +40,7 @@ while ( have_posts() ) :
 				<?php esc_html_e( 'Request a quote or talk to an expert for more information', 'freemantech' ); ?>
 			</p>
 
-			<?php freemantech_jotform( '232205999688171' ); ?>
+			<?php freemantech_jotform( '232205999688171', 836 ); ?>
 		</section>
 
 	</main><!-- #primary -->

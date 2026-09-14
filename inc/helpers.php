@@ -169,17 +169,111 @@ function freemantech_pagination() {
 /**
  * Embed a JotForm.
  *
- * The forms were previously injected through Elementor HTML widgets; the markup
- * is identical, it just lives in the theme now.
+ * Deliberately NOT the /jsform/ script embed that Elementor used. That script
+ * is render-blocking and calls document.write() to inject the iframe, so the
+ * iframe cannot start loading until the script has fully downloaded and run --
+ * the two requests run back to back instead of in parallel.
  *
- * @param string $form_id JotForm form id.
+ * Pointing an iframe straight at the form puts the URL in the initial HTML, so
+ * the browser starts fetching it while it is still parsing the page, and
+ * nothing blocks rendering.
+ *
+ * @param string $form_id    JotForm form id.
+ * @param int    $min_height Height to reserve while the form loads, in px.
  */
-function freemantech_jotform( $form_id ) {
-	printf(
-		'<div class="ft-jotform"><script type="text/javascript" src="%s"></script></div>',
-		esc_url( 'https://form.jotform.com/jsform/' . $form_id )
-	);
+function freemantech_jotform( $form_id, $min_height = 700 ) {
+	$form_id = preg_replace( '/[^0-9]/', '', (string) $form_id );
+
+	if ( '' === $form_id ) {
+		return;
+	}
+
+	freemantech_note_jotform( true );
+	?>
+	<div class="ft-jotform" style="min-height:<?php echo (int) $min_height; ?>px">
+		<iframe
+			id="JotFormIFrame-<?php echo esc_attr( $form_id ); ?>"
+			title="<?php esc_attr_e( 'Enquiry form', 'freemantech' ); ?>"
+			src="<?php echo esc_url( 'https://form.jotform.com/' . $form_id ); ?>"
+			allow="geolocation; microphone; camera; fullscreen; payment"
+			allowtransparency="true"
+			scrolling="no"
+			frameborder="0"
+			style="height:<?php echo (int) $min_height; ?>px"></iframe>
+	</div>
+	<?php
 }
+
+/**
+ * Track whether a JotForm was rendered on this request.
+ *
+ * @param bool|null $set Pass true to record one.
+ * @return bool
+ */
+function freemantech_note_jotform( $set = null ) {
+	static $present = false;
+
+	if ( true === $set ) {
+		$present = true;
+	}
+
+	return $present;
+}
+
+/**
+ * Warm up the JotForm connections.
+ *
+ * DNS and TLS to a third-party host is most of the wait before the form's own
+ * bytes start arriving; doing it in the head overlaps that with page render.
+ *
+ * @param array  $urls          Resource URLs.
+ * @param string $relation_type Relation type.
+ * @return array
+ */
+function freemantech_jotform_hints( $urls, $relation_type ) {
+	if ( 'preconnect' === $relation_type ) {
+		$urls[] = array( 'href' => 'https://form.jotform.com' );
+		$urls[] = array( 'href' => 'https://cdn.jotfor.ms' );
+	}
+
+	return $urls;
+}
+add_filter( 'wp_resource_hints', 'freemantech_jotform_hints', 10, 2 );
+
+/**
+ * Load JotForm's resize handler, but only where a form was actually rendered.
+ *
+ * Deferred: it only adjusts the iframe height once the form reports its size,
+ * so it has no reason to hold up rendering.
+ */
+function freemantech_jotform_resizer() {
+	if ( ! freemantech_note_jotform() ) {
+		return;
+	}
+	?>
+	<script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js" defer></script>
+	<script>
+		( function () {
+			function init() {
+				if ( ! window.jotformEmbedHandler ) {
+					window.setTimeout( init, 50 );
+					return;
+				}
+
+				Array.prototype.forEach.call(
+					document.querySelectorAll( '.ft-jotform iframe[id^="JotFormIFrame-"]' ),
+					function ( frame ) {
+						window.jotformEmbedHandler( "iframe[id='" + frame.id + "']", 'https://form.jotform.com/' );
+					}
+				);
+			}
+
+			init();
+		} )();
+	</script>
+	<?php
+}
+add_action( 'wp_footer', 'freemantech_jotform_resizer', 20 );
 
 /**
  * Output a post excerpt the way Elementor's post-excerpt widget did.
