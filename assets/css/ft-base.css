@@ -98,7 +98,14 @@ body {
 	-webkit-font-smoothing: antialiased;
 }
 
-img, svg, video { max-width: 100%; height: auto; display: block; }
+img, video { max-width: 100%; height: auto; display: block; }
+
+/*
+ * SVG keeps max-width only. Forcing height:auto here would override an
+ * explicit height="100%" (the powder chart's arrow overlay relies on it to
+ * resolve its percentage coordinates).
+ */
+svg { max-width: 100%; }
 
 a { color: var(--ft-color-primary); text-decoration: none; }
 a:hover { text-decoration: underline; }

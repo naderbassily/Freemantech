@@ -30,7 +30,7 @@
 	cursor: pointer;
 	color: var(--ft-color-primary);
 }
-.ft-search__submit svg { fill: currentColor; }
+.ft-search__submit svg { fill: currentColor; flex: none; }
 
 @media (max-width: 1366px) { .ft-search__input { padding: 3px; } }
 
