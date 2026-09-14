@@ -107,7 +107,13 @@ img, video { max-width: 100%; height: auto; display: block; }
  */
 svg { max-width: 100%; }
 
-a { color: var(--ft-color-primary); text-decoration: none; }
+/*
+ * :visited is spelled out because the inherited _s stylesheet sets
+ * `a:visited { color: #800080 }`, and that outranks a single class on
+ * specificity -- it was turning visited buttons and links purple.
+ */
+a,
+a:visited { color: var(--ft-color-primary); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 h1, h2, h3, h4, h5, h6 {
@@ -188,11 +194,60 @@ p:last-child { margin-bottom: 0; }
 }
 .ft-btn:hover { text-decoration: none; }
 
-.ft-btn--blue { background-color: var(--ft-color-primary); color: var(--ft-color-white); }
+.ft-btn--blue,
+.ft-btn--blue:visited { background-color: var(--ft-color-primary); color: var(--ft-color-white); }
 .ft-btn--blue:hover { background-color: #00499a; color: var(--ft-color-white); }
 
-.ft-btn--white { background-color: var(--ft-color-white); color: var(--ft-color-primary); }
+.ft-btn--white,
+.ft-btn--white:visited { background-color: var(--ft-color-white); color: var(--ft-color-primary); }
 .ft-btn--white:hover { background-color: var(--ft-color-accent-blue); }
 
-.ft-btn--outline { background-color: transparent; color: var(--ft-color-primary); border-color: var(--ft-color-primary); }
-.ft-btn--outline:hover { background-color: var(--ft-color-primary); color: var(--ft-color-white); }
+/* ------------------------------------------------------- form controls --- */
+/*
+ * One field style for the whole site, matching the resource filter and the
+ * enquiry forms: white ground, hairline border, 5px radius.
+ *
+ * The full selector list mirrors the one in the inherited _s stylesheet --
+ * `input[type="search"]` and friends outrank a single class, so overriding by
+ * class alone would not take.
+ */
+.ft-field,
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+textarea,
+select {
+	padding: 12px 15px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	font-family: var(--ft-font-text);
+	font-size: 14px;
+	line-height: 1.4;
+	color: var(--ft-color-text);
+	background-color: var(--ft-color-white);
+	transition: border-color .3s ease;
+}
+
+.ft-field:focus,
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+textarea:focus,
+select:focus {
+	outline: none;
+	border-color: var(--ft-color-primary);
+}

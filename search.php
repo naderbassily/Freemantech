@@ -108,11 +108,12 @@ $freemantech_query = get_search_query();
 
 			<div class="ft-empty__search"><?php get_search_form(); ?></div>
 
+			<?php // The site's existing arrow-link pattern, so this adds no new button style. ?>
 			<div class="ft-empty__links">
-				<a class="ft-btn ft-btn--blue" href="<?php echo esc_url( home_url( '/resources/' ) ); ?>"><?php esc_html_e( 'Resource Library', 'freemantech' ); ?></a>
-				<a class="ft-btn ft-btn--outline" href="<?php echo esc_url( home_url( '/products/' ) ); ?>"><?php esc_html_e( 'Products', 'freemantech' ); ?></a>
-				<a class="ft-btn ft-btn--outline" href="<?php echo esc_url( home_url( '/applications/' ) ); ?>"><?php esc_html_e( 'Applications', 'freemantech' ); ?></a>
-				<a class="ft-btn ft-btn--outline" href="<?php echo esc_url( home_url( '/contact-us/' ) ); ?>"><?php esc_html_e( 'Contact us', 'freemantech' ); ?></a>
+				<div class="simple-read-more btn-blue"><a href="<?php echo esc_url( home_url( '/resources/' ) ); ?>"><?php esc_html_e( 'Resource Library', 'freemantech' ); ?></a></div>
+				<div class="simple-read-more btn-blue"><a href="<?php echo esc_url( home_url( '/products/' ) ); ?>"><?php esc_html_e( 'Products', 'freemantech' ); ?></a></div>
+				<div class="simple-read-more btn-blue"><a href="<?php echo esc_url( home_url( '/applications/' ) ); ?>"><?php esc_html_e( 'Applications', 'freemantech' ); ?></a></div>
+				<div class="simple-read-more btn-blue"><a href="<?php echo esc_url( home_url( '/contact-us/' ) ); ?>"><?php esc_html_e( 'Contact us', 'freemantech' ); ?></a></div>
 			</div>
 		</div>
 
