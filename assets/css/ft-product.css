@@ -3,8 +3,12 @@
  * Replaces Elementor template 281.
  */
 
-/* Full width: this template's Elementor container was never boxed. */
-.ft-product { display: flex; flex-direction: column; gap: 40px; margin-bottom: 50px; width: 100%; }
+/*
+ * Sits in the shared .main-flow container like every other template, and takes
+ * its width, gap and bottom margin from it. The Elementor original ran edge to
+ * edge, which made this the only page on the site without the standard gutter.
+ */
+.ft-product { display: flex; flex-direction: column; }
 
 .ft-product__heading { color: var(--ft-color-primary); }
 
