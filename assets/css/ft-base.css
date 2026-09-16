@@ -138,6 +138,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p { margin: 0 0 1rem; }
+
+/*
+ * The inherited _s stylesheet puts a 1.5em top margin on .entry-content, which
+ * these layouts do not want -- the surrounding flex gap already spaces them.
+ * Lives here, not in a page-type sheet, because it cancels a global rule and
+ * every content template needs it.
+ */
+.ft-page__content.entry-content,
+.ft-article__content.entry-content,
+.ft-accessory__content.entry-content { margin-top: 0; }
 p:last-child { margin-bottom: 0; }
 
 /* ----------------------------------------------------------- utilities --- */

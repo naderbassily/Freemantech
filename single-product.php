@@ -41,7 +41,8 @@ while ( have_posts() ) :
 
 				<div class="ft-product__banner-media">
 					<?php if ( $freemantech_side ) : ?>
-						<img class="ft4-hero" src="<?php echo esc_url( $freemantech_side ); ?>" alt="" width="800" height="500">
+						<img class="ft4-hero" src="<?php echo esc_url( $freemantech_side ); ?>" alt=""
+							width="800" height="500" fetchpriority="high" decoding="async">
 					<?php endif; ?>
 				</div>
 

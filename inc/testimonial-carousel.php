@@ -14,6 +14,21 @@ if (!defined('ABSPATH')) {
  * Enqueue testimonial carousel assets
  */
 function testimonial_carousel_enqueue_assets() {
+    /*
+     * Swiper drives three things: the testimonial carousel (About us), and the
+     * application carousels on the front page and the product page. Loading it
+     * everywhere put a render-blocking CDN stylesheet on pages with no carousel
+     * at all.
+     */
+    $needs_swiper = is_front_page()
+        || is_singular( 'product' )
+        || is_page( 'about-us' );
+
+    /** Filter which views load the carousel assets. */
+    if ( ! apply_filters( 'freemantech_needs_carousel', $needs_swiper ) ) {
+        return;
+    }
+
     // Swiper CSS from CDN
     wp_enqueue_style(
         'swiper-css',

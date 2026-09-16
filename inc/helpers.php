@@ -311,30 +311,31 @@ function freemantech_the_excerpt() {
 }
 
 /**
- * Load the brand webfonts.
+ * Load the brand webfont.
  *
- * Elementor used to enqueue these from Google Fonts; without them the theme
- * declared Inter / Inter Tight / Roboto but fell back to whatever the visitor
- * happened to have, which changed text metrics and line wrapping everywhere.
- * Weights match what Elementor requested.
+ * Inter only, in one request. Elementor pulled Inter, Inter Tight and Roboto
+ * as three separate render-blocking requests, each asking for all nine weights
+ * plus italics -- but nothing on the site renders in Inter Tight or Roboto, and
+ * only 400/500/600/700 are ever used.
+ *
+ * Filter `freemantech_font_families` if a design later needs more.
  */
 function freemantech_fonts() {
-	$weights = '100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic';
-
-	$families = array(
-		'Inter'       => $weights,
-		'Inter+Tight' => $weights,
-		'Roboto'      => $weights,
+	$families = apply_filters(
+		'freemantech_font_families',
+		array( 'Inter:400,400italic,500,600,700,700italic' )
 	);
 
-	foreach ( $families as $family => $variants ) {
-		wp_enqueue_style(
-			'freemantech-font-' . strtolower( str_replace( '+', '-', $family ) ),
-			'https://fonts.googleapis.com/css?family=' . $family . ':' . $variants . '&display=swap',
-			array(),
-			null // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
-		);
+	if ( ! $families ) {
+		return;
 	}
+
+	wp_enqueue_style(
+		'freemantech-fonts',
+		'https://fonts.googleapis.com/css?family=' . implode( '|', $families ) . '&display=swap',
+		array(),
+		null // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
+	);
 }
 add_action( 'wp_enqueue_scripts', 'freemantech_fonts', 5 );
 

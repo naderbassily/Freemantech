@@ -11,7 +11,8 @@
 get_header();
 
 $freemantech_hero_image  = freemantech_asset_url( '2026/01/FT4-hero.jpg' );
-$freemantech_intro_image = freemantech_asset_url( '2026/01/a2015a30-9320-4582-9462-f61ef30db650.png' );
+// The 1024 crop, not the 1.4MB original: this renders ~780px wide.
+$freemantech_intro_image = freemantech_asset_url( '2026/01/a2015a30-9320-4582-9462-f61ef30db650-1024x683.png' );
 ?>
 
 <main id="primary" class="site-main main-flow">
@@ -34,7 +35,8 @@ $freemantech_intro_image = freemantech_asset_url( '2026/01/a2015a30-9320-4582-94
 		<div class="ft-hero__media">
 			<?php if ( $freemantech_hero_image ) : ?>
 				<img class="ft4-hero" src="<?php echo esc_url( $freemantech_hero_image ); ?>"
-					alt="<?php esc_attr_e( 'FT4 Powder Rheometer', 'freemantech' ); ?>" width="800" height="500">
+					alt="<?php esc_attr_e( 'FT4 Powder Rheometer', 'freemantech' ); ?>"
+					width="800" height="500" fetchpriority="high" decoding="async">
 			<?php endif; ?>
 		</div>
 

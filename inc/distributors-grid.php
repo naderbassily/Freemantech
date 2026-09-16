@@ -14,6 +14,11 @@ if (!defined('ABSPATH')) {
  * Enqueue distributors grid assets
  */
 function distributors_grid_enqueue_assets() {
+    // [distributors_grid] only renders on Contact us.
+    if ( ! apply_filters( 'freemantech_needs_distributors_grid', is_page( 'contact-us' ) ) ) {
+        return;
+    }
+
     // CSS
     wp_enqueue_style(
         'distributors-grid-css',

@@ -140,22 +140,36 @@ function freemantech_scripts() {
 	wp_enqueue_style( 'freemantech-base', get_template_directory_uri() . '/assets/css/ft-base.css', array(), _S_VERSION );
 	wp_enqueue_style( 'freemantech-layout', get_template_directory_uri() . '/assets/css/ft-layout.css', array( 'freemantech-base' ), _S_VERSION );
 	wp_enqueue_style( 'freemantech-components', get_template_directory_uri() . '/assets/css/ft-components.css', array( 'freemantech-base' ), _S_VERSION );
-	wp_enqueue_style( 'freemantech-article', get_template_directory_uri() . '/assets/css/ft-article.css', array( 'freemantech-base' ), _S_VERSION );
-	wp_enqueue_style( 'freemantech-archive', get_template_directory_uri() . '/assets/css/ft-archive.css', array( 'freemantech-base' ), _S_VERSION );
-	wp_enqueue_style( 'freemantech-page', get_template_directory_uri() . '/assets/css/ft-page.css', array( 'freemantech-base' ), _S_VERSION );
-	wp_enqueue_style( 'freemantech-product', get_template_directory_uri() . '/assets/css/ft-product.css', array( 'freemantech-base' ), _S_VERSION );
+	/*
+	 * Page-specific sheets load only where their markup exists. Every stylesheet
+	 * in the head is render-blocking, and these were previously loaded on every
+	 * page regardless.
+	 */
+	if ( is_singular( array( 'applications', 'resources', 'features' ) ) ) {
+		wp_enqueue_style( 'freemantech-article', get_template_directory_uri() . '/assets/css/ft-article.css', array( 'freemantech-base' ), _S_VERSION );
+	}
+
+	if ( is_archive() || is_search() || is_home() ) {
+		wp_enqueue_style( 'freemantech-archive', get_template_directory_uri() . '/assets/css/ft-archive.css', array( 'freemantech-base' ), _S_VERSION );
+	}
+
+	if ( is_page() || is_singular( array( 'product', 'accessories' ) ) || is_404() ) {
+		wp_enqueue_style( 'freemantech-page', get_template_directory_uri() . '/assets/css/ft-page.css', array( 'freemantech-base' ), _S_VERSION );
+	}
 
 	if ( is_singular( 'product' ) ) {
+		wp_enqueue_style( 'freemantech-product', get_template_directory_uri() . '/assets/css/ft-product.css', array( 'freemantech-base' ), _S_VERSION );
 		wp_enqueue_style( 'freemantech-powder-chart', get_template_directory_uri() . '/assets/css/ft-powder-chart.css', array( 'freemantech-base' ), _S_VERSION );
 		wp_enqueue_script( 'freemantech-powder-chart', get_template_directory_uri() . '/js/ft-powder-chart.js', array(), _S_VERSION, true );
 		wp_enqueue_script( 'freemantech-sticky-nav', get_template_directory_uri() . '/js/ft-sticky-nav.js', array(), _S_VERSION, true );
+		wp_enqueue_script( 'freemantech-tabs', get_template_directory_uri() . '/js/ft-tabs.js', array(), _S_VERSION, true );
 	}
-
-	wp_enqueue_script( 'freemantech-tabs', get_template_directory_uri() . '/js/ft-tabs.js', array(), _S_VERSION, true );
 
 	wp_enqueue_script( 'freemantech-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'freemantech-mobile-nav', get_template_directory_uri() . '/js/mobile-nav.js', array(), _S_VERSION, true );
-	wp_enqueue_script( 'freemantech-carousel', get_template_directory_uri() . '/js/ft-carousel.js', array( 'swiper-js' ), _S_VERSION, true );
+	if ( is_front_page() || is_singular( 'product' ) ) {
+		wp_enqueue_script( 'freemantech-carousel', get_template_directory_uri() . '/js/ft-carousel.js', array( 'swiper-js' ), _S_VERSION, true );
+	}
 	wp_enqueue_script( 'freemantech-back-to-top', get_template_directory_uri() . '/js/ft-back-to-top.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -233,6 +247,11 @@ add_action('wp_enqueue_scripts', 'ft_enqueue_styles');
 require_once get_stylesheet_directory() . '/inc/specs-shortcode.php';
 
 add_action('wp_enqueue_scripts', function () {
+
+    // [product_specs] only renders on the product template.
+    if ( ! is_singular( 'product' ) ) {
+        return;
+    }
 
     wp_enqueue_style(
         'mp-product-specs',

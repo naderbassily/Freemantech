@@ -155,40 +155,6 @@
 	text-decoration: none;
 }
 
-/* ------------------------------------------------------ product/accessory - */
-
-.ft-card--product,
-.ft-card--accessory {
-	color: inherit;
-	text-decoration: none;
-	height: 100%;
-}
-.ft-card--product:hover,
-.ft-card--accessory:hover { text-decoration: none; }
-
-.ft-card--product { gap: 12px; }
-.ft-card--accessory { gap: 20px; }
-
-.ft-card--product .ft-card__image,
-.ft-card--accessory .ft-card__image { width: 100%; max-width: 100%; border-radius: 10px; }
-
-.ft-card--product .ft-card__title,
-.ft-card--accessory .ft-card__title { text-align: center; color: var(--ft-color-primary); margin: 0; }
-
-.ft-card--product .ft-card__title {
-	font-size: var(--ft-title-xs-size);
-	font-weight: var(--ft-title-xs-weight);
-	line-height: var(--ft-title-xs-line);
-}
-.ft-card--accessory .ft-card__title {
-	font-family: var(--ft-font-text);
-	font-size: var(--ft-text-size);
-	font-weight: var(--ft-text-weight);
-	line-height: var(--ft-text-line);
-}
-
-.ft-card--product .ft-card__excerpt { text-align: center; color: var(--ft-color-text); }
-
 /* ======================================================= search results == */
 /*
  * Styled after the Resource Library listing: stacked cards with a type label,

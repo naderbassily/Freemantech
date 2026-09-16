@@ -5,14 +5,6 @@
 
 .ft-page { display: flex; flex-direction: column; gap: 50px; }
 
-/*
- * The inherited _s stylesheet puts a 1.5em top margin on .entry-content, which
- * these layouts do not want -- the surrounding flex gap already spaces them.
- */
-.ft-page__content.entry-content,
-.ft-article__content.entry-content,
-.ft-accessory__content.entry-content { margin-top: 0; }
-
 .ft-page__title { color: var(--ft-color-primary); }
 
 /* Title and content were separate widgets 50px apart. */

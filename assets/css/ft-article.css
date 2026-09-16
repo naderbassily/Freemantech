@@ -108,27 +108,6 @@
 /* 50px separates the heading from the list; the loop grid itself used 30px. */
 .ft-article__related-list { display: flex; flex-direction: column; gap: 30px; }
 
-/* Related card (was loop template 536). */
-.ft-card--related {
-	gap: 20px;
-	justify-content: space-evenly;
-	padding: 20px;
-	border-radius: 10px;
-	background-color: var(--ft-color-accent-blue);
-}
-.ft-card--related .ft-card__title {
-	font-size: var(--ft-title-xs-size);
-	font-weight: var(--ft-title-xs-weight);
-	line-height: var(--ft-title-xs-line);
-	color: var(--ft-color-primary);
-}
-.ft-card--related .ft-card__excerpt {
-	font-family: var(--ft-font-primary);
-	font-size: .8rem;
-	font-weight: 400;
-	line-height: 1.2rem;
-}
-
 @media (max-width: 1366px) { .ft-article__layout { gap: 50px; } }
 
 @media (max-width: 767px) {
