@@ -42,7 +42,7 @@ $freemantech_ft4_thumb = freemantech_asset_url( '2026/01/FT4-thumb.jpg' );
 
 	</section>
 
-	<section class="ft-archive__accessories">
+	<section id="accessories" class="ft-archive__accessories">
 
 		<header class="ft-archive__intro">
 			<h2 class="ft-archive__title ft-title-sm"><?php esc_html_e( 'Accessories', 'freemantech' ); ?></h2>

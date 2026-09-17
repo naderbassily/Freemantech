@@ -5,6 +5,7 @@
  */
 
 function resource_filter_shortcode($atts) {
+    wp_enqueue_script('jquery');
     // Shortcode attributes
     $atts = shortcode_atts(array(
         'posts_per_page' => 12,
@@ -386,7 +387,8 @@ function resource_filter_shortcode($atts) {
     </style>
     
     <script>
-    jQuery(document).ready(function($) {
+    document.addEventListener('DOMContentLoaded', function() {
+        const $ = jQuery;
         const form = $('#resourceFilterForm');
         const resultsContainer = $('#resourcesResults');
         const loadingOverlay = $('.loading-overlay');
@@ -399,7 +401,12 @@ function resource_filter_shortcode($atts) {
         
         // Handle reset button
         $('#resetFilter').on('click', function() {
-            form[0].reset();
+            form.find('input[type="text"], select').val('');
+            const url = new URL(window.location.href);
+            ['resource_search', 'application', 'class', 'paged'].forEach(function(key) {
+                url.searchParams.delete(key);
+            });
+            window.history.replaceState(null, '', url);
             filterResources();
         });
         

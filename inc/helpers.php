@@ -191,6 +191,27 @@ function freemantech_jotform( $form_id, $min_height = 700 ) {
 	freemantech_note_jotform( true );
 	?>
 	<div class="ft-jotform" style="min-height:<?php echo (int) $min_height; ?>px">
+		<div class="ft-jotform__loader" role="status" hidden>
+			<span class="ft-jotform__spinner" aria-hidden="true"></span>
+			<span><?php esc_html_e( 'Loading form…', 'freemantech' ); ?></span>
+		</div>
+		<script>
+			( function ( wrapper ) {
+				var loader = wrapper.querySelector( '.ft-jotform__loader' );
+				loader.hidden = false;
+				function finish() {
+					loader.hidden = true;
+					window.clearTimeout( timeout );
+				}
+				// Never leave a spinner running indefinitely if the embed is blocked.
+				var timeout = window.setTimeout( finish, 20000 );
+				wrapper.addEventListener( 'load', function ( event ) {
+					if ( event.target.tagName === 'IFRAME' ) {
+						finish();
+					}
+				}, true );
+			} )( document.currentScript.parentElement );
+		</script>
 		<iframe
 			id="JotFormIFrame-<?php echo esc_attr( $form_id ); ?>"
 			title="<?php esc_attr_e( 'Enquiry form', 'freemantech' ); ?>"

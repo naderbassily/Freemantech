@@ -117,8 +117,35 @@
 .ft-contact-block__text { text-align: center; margin: 0; }
 
 /* The wrapper reserves the form's height so nothing jumps when it arrives. */
-.ft-jotform { width: 100%; }
+.ft-jotform { position: relative; width: 100%; }
 .ft-jotform iframe { width: 100% !important; min-width: 100%; max-width: 100%; border: 0; display: block; }
+.ft-jotform__loader {
+	position: absolute;
+	z-index: 1;
+	top: 32px;
+	left: 0;
+	right: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	color: var(--ft-color-primary);
+	font-size: 14px;
+	pointer-events: none;
+}
+.ft-jotform__loader[hidden] { display: none; }
+.ft-jotform__spinner {
+	width: 20px;
+	height: 20px;
+	border: 2px solid currentColor;
+	border-right-color: transparent;
+	border-radius: 50%;
+	animation: ft-jotform-spin .8s linear infinite;
+}
+@keyframes ft-jotform-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+	.ft-jotform__spinner { animation: none; }
+}
 
 /* --------------------------------------------------------------- contact - */
 

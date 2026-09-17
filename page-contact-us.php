@@ -46,7 +46,7 @@ while ( have_posts() ) :
 
 				<div class="ft-contact__tile">
 					<div class="simple-read-more btn-blue">
-						<a href="<?php echo esc_url( home_url( '/product/ft4-powder-rheometer/' ) ); ?>"><?php esc_html_e( 'Buy Accessories', 'freemantech' ); ?></a>
+						<a href="<?php echo esc_url( home_url( '/products/#accessories' ) ); ?>"><?php esc_html_e( 'Buy Accessories', 'freemantech' ); ?></a>
 					</div>
 				</div>
 

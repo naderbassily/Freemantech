@@ -196,6 +196,9 @@
 .ft-tabs__media img { width: auto; max-width: 100%; height: auto; }
 
 .ft-tabs__media--boxed {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	padding: 20px;
 	border-radius: 5px;
 	background-color: var(--ft-color-accent);
